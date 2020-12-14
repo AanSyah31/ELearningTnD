@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">E-Learning TnD</string>
+
+
+    <string name="terbaru">TERBARU!</string>
+    <string name="silahkan_masuk_menggunakan_username_dan_password_atau_gunakan_sidik_jari">Silahkan masuk menggunakan username dan password atau gunakan sidik jari</string>
+    <string name="tentang_kami">Aplikasi adalah sebuah aplikasi belajar dengan metode pembelajaran yang mandiri belajar dimana saja kapan saja kita mau. Produk yang disediakan modul digital yang dimana berbentuk audio visual dan juga buku saku tentang SRS (Sulung Reasearch Station). Materi yang dibahas diaplikasi ini adalah materi perkebunan kelapa sawit dari Estate, Mill, Administrasi, Traksi, Supporting, dan juga ada materi dasar soft skill, yang dimana materi tersebut bisa kita download secara online dan ada beberapa modul yang bisa kita akses secara offline.</string>
+</resources>

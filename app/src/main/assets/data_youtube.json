@@ -1,0 +1,100 @@
+﻿{
+"db_youtube":[
+  {
+    "db_softskill":[
+      {
+        "id": "1",
+        "video_id": "bSMZknDI6bg",
+        "judul": "Training",
+        "tag": "Training"
+      },
+      {
+        "id": "2",
+        "video_id": "W4hTJybfU7s",
+        "judul": "Development",
+        "tag": "Development"
+      }
+    ]
+  },
+  {
+     "db_estate":[
+       {
+         "id": "1",
+         "video_id": "bSMZknDI6bg",
+         "judul": "Training",
+         "tag": "Training"
+       },
+       {
+         "id": "2",
+         "video_id": "W4hTJybfU7s",
+         "judul": "Development",
+         "tag": "Development"
+       }
+     ]
+   },
+   {
+      "db_admin":[
+        {
+          "id": "1",
+          "video_id": "bSMZknDI6bg",
+          "judul": "Training",
+          "tag": "Training"
+        },
+        {
+          "id": "2",
+          "video_id": "W4hTJybfU7s",
+          "judul": "Development",
+          "tag": "Development"
+        }
+      ]
+    },
+    {
+       "db_mill":[
+         {
+           "id": "1",
+           "video_id": "bSMZknDI6bg",
+           "judul": "Training",
+           "tag": "Training"
+         },
+         {
+           "id": "2",
+           "video_id": "W4hTJybfU7s",
+           "judul": "Development",
+           "tag": "Development"
+         }
+       ]
+     },
+     {
+        "db_traksi":[
+          {
+            "id": "1",
+            "video_id": "bSMZknDI6bg",
+            "judul": "Training",
+            "tag": "Training"
+          },
+          {
+            "id": "2",
+            "video_id": "W4hTJybfU7s",
+            "judul": "Development",
+            "tag": "Development"
+          }
+        ]
+      },
+      {
+         "db_supporting":[
+           {
+             "id": "1",
+             "video_id": "bSMZknDI6bg",
+             "judul": "Training",
+             "tag": "Training"
+           },
+           {
+             "id": "2",
+             "video_id": "W4hTJybfU7s",
+             "judul": "Development",
+             "tag": "Development"
+           }
+         ]
+       }
+  ]
+}

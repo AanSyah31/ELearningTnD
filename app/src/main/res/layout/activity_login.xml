@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/login_parent"
+    android:background="@color/border_lightgreen1"
+    android:orientation="vertical"
+    tools:context=".Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/imm"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/icon_login"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:contentDescription="Logo ELearning" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/helvetica"
+            android:gravity="center"
+            android:text="Login"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="#00000000"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/loginLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@color/border_lightgreen1"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/border_lightgreen1"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:id="@+id/shake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <com.github.florent37.materialtextfield.MaterialTextField
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mtf_labelColor="#666"
+                        app:mtf_backgroundColor="@color/white"
+                        android:id="@+id/textFieldUser"
+                        app:mtf_image="@drawable/ic_account_box_24dp">
+
+                        <EditText
+                            android:id="@+id/etUser"
+                            style="@style/AppTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text2"
+                            android:layout_centerVertical="true"
+                            android:autofillHints="Username"
+                            android:backgroundTint="@color/black"
+                            android:fontFamily="@font/segoeuil"
+                            android:gravity="center|left"
+                            android:hint="Username"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="15sp"
+                            tools:ignore="RtlHardcoded,UnusedAttribute" />
+
+                    </com.github.florent37.materialtextfield.MaterialTextField>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Masukkan username (contoh:USER)"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        tools:ignore="HardcodedText,SmallSp" />
+
+                    <com.github.florent37.materialtextfield.MaterialTextField
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:mtf_labelColor="#666"
+                        app:mtf_backgroundColor="@color/white"
+                        android:id="@+id/textFieldPass"
+                        app:mtf_image="@drawable/ic_vpn_key_24dp">
+
+                        <EditText
+                            android:id="@+id/etPass"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/input1"
+                            android:layout_centerVertical="true"
+                            android:autofillHints="Password"
+                            android:backgroundTint="@color/black"
+                            android:fontFamily="@font/helvetica"
+                            android:gravity="center|left"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textSize="15sp"
+                            tools:ignore="RtlHardcoded,UnusedAttribute" />
+
+                    </com.github.florent37.materialtextfield.MaterialTextField>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Masukkan password(contoh: password)"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        tools:ignore="HardcodedText,SmallSp" />
+
+                    <CheckBox
+                        android:id="@+id/show"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:buttonTint="@color/black"
+                        android:fontFamily="@font/helvetica"
+                        android:gravity="center|left"
+                        android:text="Show Password"
+                        android:textStyle="bold"
+                        tools:ignore="HardcodedText,RtlHardcoded" />
+
+                    <LinearLayout
+                        android:id="@+id/linearTombol"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btMasuk"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:outlineAmbientShadowColor="@color/border_lightgreen1"
+                            android:padding="5dp"
+                            android:text="Masuk"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            app:backgroundTint="@color/white"
+                            app:cornerRadius="10dp"
+                            app:strokeColor="@color/border_lightgreen1"
+                            app:strokeWidth="1dp"
+                            tools:targetApi="p" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btFP"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:outlineAmbientShadowColor="@color/border_lightgreen1"
+                        android:padding="5dp"
+                        android:text="Sidik Jari"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:visibility="gone"
+                        app:backgroundTint="@color/white"
+                        app:cornerRadius="10dp"
+                        app:strokeColor="@color/border_lightgreen1"
+                        app:strokeWidth="1dp"
+                        tools:targetApi="p" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/errorLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/resultError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="2dp"
+                    android:fontFamily="@font/helvetica"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".Loading"
+        android:id="@+id/progressBarHolder"
+        android:visibility="gone"
+        android:elevation="20dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:weightSum="4">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"/>
+
+            <ImageView
+                android:id="@+id/logo_elearning"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Logo ELearning" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_hint_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginEnd="32dp"
+            android:text="Sedang memproses data user, mohon tunggu"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

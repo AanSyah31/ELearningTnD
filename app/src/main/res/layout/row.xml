@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:background="@color/border_lightgreen1"
+    android:id="@+id/cardHolder">
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:videoId="bSMZknDI6bg"
+        app:autoPlay="false"
+        app:showYouTubeButton="false"
+        android:id="@+id/id_youtube"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_judulYoutube"
+        android:fontFamily="@font/helvetica"
+        android:textColor="@color/black"
+        android:textSize="23sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_tagYoutube"
+        android:fontFamily="@font/helvetica"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
+
+</LinearLayout>

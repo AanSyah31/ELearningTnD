@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:background="@color/border_lightgreen1"
+    tools:context=".ModulDigital">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="70dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            app:strokeColor="@color/white"
+            android:background="@color/white"
+            app:strokeWidth="1.5dp"
+            android:id="@+id/mcSearch"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Search . . ."
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/helvetica"
+                    android:layout_margin="15dp"
+                    android:textSize="15sp"
+                    android:textAlignment="center"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_below="@+id/mcSearch"
+            android:layout_marginTop="30dp">
+
+            <include
+                android:id="@+id/softSkill"
+                layout="@layout/list_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <include
+                android:id="@+id/estate"
+                layout="@layout/list_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <include
+                android:id="@+id/admin"
+                layout="@layout/list_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <include
+                android:id="@+id/mill"
+                layout="@layout/list_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <include
+                android:id="@+id/traksi"
+                layout="@layout/list_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+            <include
+                android:id="@+id/supporting"
+                layout="@layout/list_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tentangKamiModul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints"
+            android:layout_marginBottom="60dp">
+
+            <TextView
+                android:id="@+id/tv_ELearning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Learning"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_TnD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Training and Development"
+                android:textSize="26sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PT SSMS Tbk"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            app:strokeColor="@color/white"
+            android:background="@color/white"
+            app:strokeWidth="1.5dp"
+            android:id="@+id/mcModul"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modul Digital"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:textSize="35sp"
+                android:textAlignment="center"/>
+
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+
+</RelativeLayout>

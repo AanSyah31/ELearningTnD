@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="id.co.ssms.poetri.ICU_Main">
+    <item
+        android:id="@+id/action_add"
+        android:orderInCategory="100"
+        android:title="Add Data" />
+    <item
+        android:id="@+id/action_add_foto"
+        android:orderInCategory="100"
+        android:title="Add Foto" />
+    <item
+        android:id="@+id/action_exit"
+        android:orderInCategory="110"
+        android:title="Exit"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_bulan"
+        android:orderInCategory="108"
+        android:title="Download" />
+    <item
+        android:id="@+id/action_upload"
+        android:orderInCategory="105"
+        android:title="Upload" />
+</menu>
+

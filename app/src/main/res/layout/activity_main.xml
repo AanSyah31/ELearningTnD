@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
+    android:background="@color/border_lightgreen1"
+    tools:context=".MainMenu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                android:id="@+id/cardMenuModul"
+                app:strokeColor="@color/border_lightgreen1"
+                app:strokeWidth="1.5dp"
+                android:layout_marginTop="60dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_margin="10dp">
+
+                        <ImageView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/rsz_menu_modul"
+                            android:id="@+id/menuModul"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Modul Digital"
+                            android:textColor="@color/black"
+                            android:textSize="23sp"
+                            android:textAlignment="center"
+                            android:id="@+id/tvMenuModul"/>
+
+                    </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                android:id="@+id/cardMenuDll"
+                app:strokeColor="@color/border_lightgreen1"
+                app:strokeWidth="1.5dp"
+                android:layout_marginTop="60dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/rsz_menu_dll"
+                        android:id="@+id/menuDll"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lain - Lain"
+                        android:textColor="@color/black"
+                        android:textSize="23sp"
+                        android:textAlignment="center"
+                        android:id="@+id/tvMenuDll"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tentangKamiMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="60dp">
+
+        <TextView
+            android:id="@+id/tv_ELearning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-Learning"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/helvetica"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_TnD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Training and Development"
+            android:textSize="26sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/helvetica"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PT SSMS Tbk"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/helvetica"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

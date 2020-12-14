@@ -1,0 +1,78 @@
+{
+  "db_kemandoran": [
+    {
+      "kemandoran_list": "OA 01",
+      "karyawan": [
+      {
+            "id": "1697",
+            "nama_karyawan": "WINARNO",
+            "lokasi_karyawan": "107",
+            "jabatan": "0",
+            "nik": "11160149",
+            "no_pemanen": "10065"
+          },
+          {
+            "id": "1698",
+            "nama_karyawan": "RIYONO",
+            "lokasi_karyawan": "107",
+            "jabatan": "0",
+            "nik": "11160280",
+            "no_pemanen": "10066"
+          },
+          {
+            "id": "1699",
+            "nama_karyawan": "KARDI NURDIYANTO",
+            "lokasi_karyawan": "107",
+            "jabatan": "0",
+            "nik": "11170215",
+            "no_pemanen": "10067"
+          },
+          {
+            "id": "1700",
+            "nama_karyawan": "NIMIN",
+            "lokasi_karyawan": "107",
+            "jabatan": "0",
+            "nik": "11170216",
+            "no_pemanen": "10068"
+          }
+    ]
+  },
+    {
+      "kemandoran_list": "OA 02",
+      "karyawan": [
+        {
+          "id": "1701",
+          "nama_karyawan": "BEJO GUNTORO",
+          "lokasi_karyawan": "107",
+          "jabatan": "0",
+          "nik": "11170540",
+          "no_pemanen": "10069"
+        },
+        {
+          "id": "1703",
+          "nama_karyawan": "SUNARWAN",
+          "lokasi_karyawan": "107",
+          "jabatan": "0",
+          "nik": "11180228",
+          "no_pemanen": "10071"
+        },
+        {
+          "id": "1704",
+          "nama_karyawan": "SUDIYONO",
+          "lokasi_karyawan": "107",
+          "jabatan": "0",
+          "nik": "11180446",
+          "no_pemanen": "10073"
+        },
+        {
+          "id": "1705",
+          "nama_karyawan": "WINARTO",
+          "lokasi_karyawan": "107",
+          "jabatan": "0",
+          "nik": "11180820",
+          "no_pemanen": "10074"
+        }
+      ]
+    }
+  ]
+}
