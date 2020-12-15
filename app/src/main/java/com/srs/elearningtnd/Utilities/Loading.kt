@@ -31,6 +31,16 @@ class Loading : AppCompatActivity() {
             val viewType = intent.getStringExtra("ViewType")
             if (viewType == "soft_skill"){
                 loadFile("data_youtube.json", ListVideo::class.java, "soft_skill", "")
+            } else if (viewType == "estate"){
+                loadFile("data_youtube.json", ListVideo::class.java, "estate", "")
+            } else if (viewType == "admin"){
+                loadFile("data_youtube.json", ListVideo::class.java, "admin", "")
+            } else if (viewType == "mill"){
+                loadFile("data_youtube.json", ListVideo::class.java, "mill", "")
+            } else if (viewType == "traksi"){
+                loadFile("data_youtube.json", ListVideo::class.java, "traksi", "")
+            } else if (viewType == "supporting"){
+                loadFile("data_youtube.json", ListVideo::class.java, "supporting", "")
             }
         }
     }

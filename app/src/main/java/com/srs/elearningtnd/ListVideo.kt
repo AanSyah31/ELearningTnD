@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ListView
 import androidx.appcompat.widget.SearchView
 import com.bumptech.glide.Glide
@@ -76,6 +77,11 @@ class ListVideo : AppCompatActivity() {
                 }
                 Log.d("network", "Offline")
             }
+        }
+
+        bt_back.setOnClickListener {
+            val intent = Intent(this@ListVideo, ModulDigital::class.java)
+            startActivity(intent)
         }
     }
 
@@ -148,20 +154,20 @@ class ListVideo : AppCompatActivity() {
             "soft_skill" -> {
                 parseJSONdata(0,"db_softskill")
             }
-            "db_estate" -> {
-                parseJSONdata(0,"db_softskill")
+            "estate" -> {
+                parseJSONdata(0,"db_estate")
             }
-            "db_admin" -> {
-                parseJSONdata(0,"db_softskill")
+            "admin" -> {
+                parseJSONdata(0,"db_admin")
             }
-            "db_mill" -> {
-                parseJSONdata(0,"db_softskill")
+            "mill" -> {
+                parseJSONdata(0,"db_mill")
             }
-            "db_traksi" -> {
-                parseJSONdata(0,"db_softskill")
+            "traksi" -> {
+                parseJSONdata(0,"db_traksi")
             }
-            "db_supporting" -> {
-                parseJSONdata(0,"db_softskill")
+            "supporting" -> {
+                parseJSONdata(0,"db_supporting")
             }
         }
     }
@@ -253,7 +259,12 @@ class ListVideo : AppCompatActivity() {
             listView?.adapter = adapter
             */
         }
-        makeList()
+        val thread = Thread {
+            runOnUiThread{
+                makeList()
+            }
+        }
+        thread.start()
         Log.d("debugList","id: $id")
         Log.d("debugList","judul: $judul")
         Log.d("debugList","tag: $tag")

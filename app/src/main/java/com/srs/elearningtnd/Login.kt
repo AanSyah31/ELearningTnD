@@ -86,7 +86,7 @@ class Login : AppCompatActivity() {
     private fun setTampilan(){
         progressBarHolder.visibility = View.GONE //hilangkan progressbar
         val icon = findViewById<ImageView>(R.id.icon_login)
-        Glide.with(this).load(R.drawable.elearning_green).into(icon)
+        Glide.with(this).load(R.drawable.rsz_icon).into(icon)
 
         Glide.with(this)//GLIDE LOGO FOR LOADING LAYOUT
             .load(R.drawable.elearning_green)

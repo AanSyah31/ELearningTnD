@@ -32,7 +32,6 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:src="@drawable/elearning_green"
                 android:id="@+id/menuModul"/>
 
             <TextView

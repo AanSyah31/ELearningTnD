@@ -21,7 +21,9 @@ class Splash : AppCompatActivity() {
     private fun tampilanSplash(){
         //Glide icon
         val icon = findViewById<ImageView>(R.id.ivLogo)
-        Glide.with(this).load(R.drawable.elearning_green).into(icon)
+        Glide.with(this).load(R.drawable.rsz_icon).into(icon)
+        val iconSplash = findViewById<ImageView>(R.id.ivSplash)
+        Glide.with(this).load(R.drawable.splash).into(iconSplash)
 
         //membuat activity menjadi fullscreen
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE

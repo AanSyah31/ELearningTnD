@@ -14,9 +14,9 @@
 
     <color name="Bluebg1">#015C4B</color>
     <color name="Bluebg2">#05383C</color>
-    <color name="White">#FFFF</color>
+    <color name="White">#C4FFFFFF</color>
     <color name="Black">#FF030000</color>
-    <color name="whitetrans">#73FFFFFF</color>
+    <color name="whitetrans">#73FFFCFC</color>
 
     <!-- Lsu color -->
     <color name="def">#FF5722</color>
@@ -38,8 +38,9 @@
     <color name="border_blue">#23536E</color>
     <color name="border_purple">#6E2369</color>
     <color name="border_grey">#708090</color>
-    <color name="border_lightgreen">#7CC9CC</color>
-    <color name="border_lightgreen1">#95E7EA</color>
+    <color name="border_lightgreen">#84DFE3</color>
+    <color name="border_lightgreen1">#D0CACACA</color>
+
     <color name="border_darkgreen2">#2F4F4F</color>
     <color name="border_chartreuse">#808000</color>
     <color name="border_darkyellow">#333300</color>

@@ -36,5 +36,35 @@ class ModulDigital : AppCompatActivity() {
             intent.putExtra("ViewType", "soft_skill")
             startActivity(intent)
         }
+        estate.cardMenu.setOnClickListener {
+            val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", "estate")
+            startActivity(intent)
+        }
+        admin.cardMenu.setOnClickListener {
+            val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", "admin")
+            startActivity(intent)
+        }
+        mill.cardMenu.setOnClickListener {
+            val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", "mill")
+            startActivity(intent)
+        }
+        traksi.cardMenu.setOnClickListener {
+            val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", "traksi")
+            startActivity(intent)
+        }
+        supporting.cardMenu.setOnClickListener {
+            val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", "supporting")
+            startActivity(intent)
+        }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, MainMenu::class.java)
+        startActivity(intent)
     }
 }

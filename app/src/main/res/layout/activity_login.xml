@@ -43,7 +43,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="45dp"
-            android:background="#00000000"
+            android:background="@color/border_lightgreen1"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -54,7 +54,7 @@
                 app:cardBackgroundColor="@color/border_lightgreen1"
                 app:cardCornerRadius="15dp"
                 app:cardElevation="0dp"
-                app:strokeColor="@color/border_lightgreen1"
+                app:strokeColor="@color/border_darkblue"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -81,13 +81,12 @@
                             android:layout_below="@+id/text2"
                             android:layout_centerVertical="true"
                             android:autofillHints="Username"
-                            android:backgroundTint="@color/black"
                             android:fontFamily="@font/segoeuil"
                             android:gravity="center|left"
                             android:hint="Username"
                             android:inputType="textPersonName"
+                            android:nextFocusDown="@id/etPass"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
                             android:textSize="15sp"
                             tools:ignore="RtlHardcoded,UnusedAttribute" />
 
@@ -98,6 +97,7 @@
                         android:layout_height="wrap_content"
                         android:text="Masukkan username (contoh:USER)"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/helvetica"
                         android:textSize="10sp"
                         tools:ignore="HardcodedText,SmallSp" />
 
@@ -116,13 +116,11 @@
                             android:layout_below="@+id/input1"
                             android:layout_centerVertical="true"
                             android:autofillHints="Password"
-                            android:backgroundTint="@color/black"
                             android:fontFamily="@font/helvetica"
                             android:gravity="center|left"
                             android:hint="Password"
                             android:inputType="textPassword"
                             android:textColor="@color/black"
-                            android:textColorHint="@color/black"
                             android:textSize="15sp"
                             tools:ignore="RtlHardcoded,UnusedAttribute" />
 
@@ -133,6 +131,7 @@
                         android:layout_height="wrap_content"
                         android:text="Masukkan password(contoh: password)"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/helvetica"
                         android:textSize="10sp"
                         tools:ignore="HardcodedText,SmallSp" />
 
@@ -141,7 +140,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center"
-                        android:buttonTint="@color/black"
+                        android:buttonTint="@color/border_darkblue"
                         android:fontFamily="@font/helvetica"
                         android:gravity="center|left"
                         android:text="Show Password"
@@ -166,14 +165,16 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:foreground="?android:attr/selectableItemBackground"
-                            android:outlineAmbientShadowColor="@color/border_lightgreen1"
+                            android:outlineAmbientShadowColor="@color/border_darkblue"
                             android:padding="5dp"
                             android:text="Masuk"
                             android:textColor="@color/black"
+                            android:fontFamily="@font/helvetica"
+                            android:textStyle="bold"
                             android:textSize="16sp"
                             app:backgroundTint="@color/white"
                             app:cornerRadius="10dp"
-                            app:strokeColor="@color/border_lightgreen1"
+                            app:strokeColor="@color/border_darkblue"
                             app:strokeWidth="1dp"
                             tools:targetApi="p" />
                     </LinearLayout>
@@ -188,38 +189,22 @@
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:outlineAmbientShadowColor="@color/border_lightgreen1"
+                        android:outlineAmbientShadowColor="@color/border_darkblue"
                         android:padding="5dp"
                         android:text="Sidik Jari"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/helvetica"
+                        android:textStyle="bold"
                         android:textSize="16sp"
                         android:visibility="gone"
                         app:backgroundTint="@color/white"
                         app:cornerRadius="10dp"
-                        app:strokeColor="@color/border_lightgreen1"
+                        app:strokeColor="@color/border_darkblue"
                         app:strokeWidth="1dp"
                         tools:targetApi="p" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
-
-            <LinearLayout
-                android:id="@+id/errorLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/resultError"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="2dp"
-                    android:fontFamily="@font/helvetica"
-                    android:textStyle="bold" />
-            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

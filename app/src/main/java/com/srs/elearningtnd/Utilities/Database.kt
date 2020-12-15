@@ -9,12 +9,12 @@ object Database {
     const val TAG_SUCCESS = "success"
     const val TAG_MESSAGE = "message"
 
-    const val data_softSkill = ""
-    const val data_estate = ""
-    const val data_admin = ""
-    const val data_mill = ""
-    const val data_traksi = ""
-    const val data_supporting = ""
+    const val data_softSkill = "data_youtube.json"
+    const val data_estate = "data_youtube.json"
+    const val data_admin = "data_youtube.json"
+    const val data_mill = "data_youtube.json"
+    const val data_traksi = "data_youtube.json"
+    const val data_supporting = "data_youtube.json"
 
     const val TAG_USERNAME = "username"
     const val TAG_PASSWORD = "password"

@@ -26,7 +26,6 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
                 android:id="@+id/cardMenuModul"
-                app:strokeColor="@color/border_lightgreen1"
                 app:strokeWidth="1.5dp"
                 android:layout_marginTop="60dp">
 
@@ -50,6 +49,8 @@
                             android:layout_height="wrap_content"
                             android:text="Modul Digital"
                             android:textColor="@color/black"
+                            android:fontFamily="@font/helvetica"
+                            android:textStyle="bold"
                             android:textSize="23sp"
                             android:textAlignment="center"
                             android:id="@+id/tvMenuModul"/>
@@ -63,7 +64,6 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="15dp"
                 android:id="@+id/cardMenuDll"
-                app:strokeColor="@color/border_lightgreen1"
                 app:strokeWidth="1.5dp"
                 android:layout_marginTop="60dp">
 
@@ -87,6 +87,8 @@
                         android:layout_height="wrap_content"
                         android:text="Lain - Lain"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/helvetica"
+                        android:textStyle="bold"
                         android:textSize="23sp"
                         android:textAlignment="center"
                         android:id="@+id/tvMenuDll"/>

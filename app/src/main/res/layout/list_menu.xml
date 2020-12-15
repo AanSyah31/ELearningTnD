@@ -16,7 +16,6 @@
         app:cardBackgroundColor="@color/white"
         android:layout_gravity="center"
         android:background="@color/white"
-        app:strokeColor="@color/border_lightgreen1"
         app:strokeWidth="1.5dp">
 
         <LinearLayout

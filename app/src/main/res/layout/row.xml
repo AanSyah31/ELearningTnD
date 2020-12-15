@@ -14,9 +14,12 @@
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:videoId="bSMZknDI6bg"
         app:autoPlay="false"
-        app:showYouTubeButton="false"
+        app:showYouTubeButton="true"
+        app:showFullScreenButton="false"
+        app:showSeekBar="true"
+        app:showVideoCurrentTime="true"
+        app:showVideoDuration="true"
         android:id="@+id/id_youtube"/>
 
     <TextView
