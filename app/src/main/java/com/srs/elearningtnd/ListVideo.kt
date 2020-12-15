@@ -17,14 +17,14 @@ import org.json.JSONObject
 
 class ListVideo : AppCompatActivity() {
 
-    var listView: ListView? = null
+    var listViewV: ListView? = null
     var adapter: ListViewAdapter? = null
     var i = 0
     var search: String? = ""
     var arrayList = ArrayList<ModelList>()
     var judul = ArrayList<String>()
     var tag = ArrayList<String>()
-    var id = ArrayList<String>()
+    var id = ArrayList<Int>()
     var videoId = ArrayList<String>()
     lateinit var userDetail: JSONObject
 
@@ -32,7 +32,7 @@ class ListVideo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listview)
 
-        listView = findViewById(R.id.listView)
+        listViewV = findViewById(R.id.listView)
 
         Glide.with(this)
             .load(R.drawable.logo_png_white)
@@ -77,6 +77,28 @@ class ListVideo : AppCompatActivity() {
                 Log.d("network", "Offline")
             }
         }
+    }
+
+    private fun makeList(){
+        val arrayJudul = Array(arrayList.size){"null"}
+        val arrayTag = Array(arrayList.size){"null"}
+        val arrayVideoId = Array(arrayList.size){"null"}
+        val arrayId = Array(arrayList.size){0}
+        for((index, e) in arrayList.withIndex()){
+            arrayJudul[index] = e.judul
+            arrayTag[index] = e.tag
+            arrayVideoId[index] = e.videoId
+            arrayId[index] = e.id
+        }
+        //creating custom ArrayAdapter
+        val myListAdapter = ListViewAdapter(
+            this,
+            arrayId,
+            arrayJudul,
+            arrayTag,
+            arrayVideoId
+        )
+        listView?.adapter = myListAdapter
     }
 
     fun online(){
@@ -148,21 +170,22 @@ class ListVideo : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu, menu)
         val myActionMenuItem = menu.findItem(R.id.action_search)
         val searchView = myActionMenuItem.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        /*searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(s: String): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(s: String): Boolean {
+                val filterChar: List<String>
                 if (TextUtils.isEmpty(s)) {
-                    adapter?.filter("")
+                    adapter?.filter(filterChar)
                     listView!!.clearTextFilter()
                 } else {
                     adapter!!.filter(s)
                 }
                 return true
             }
-        })
+        })*/
         searchView.setQuery(search, true)
         Log.d("search", search!!)
         return true
@@ -173,56 +196,67 @@ class ListVideo : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun parseJSONdata(int: Int, string: String) {
+    private fun parseJSONdata(int: Int, string: String) {
         // since we have JSON object, so we are getting the object
         //here we are calling a function and that function is returning the JSON object
-        var obj: JSONObject
-        try {
-            obj = JSONObject(FileMan().onlineInputStream(this))
+        val obj: JSONObject = try {
+            JSONObject(FileMan().onlineInputStream(this))
         }catch (e:Exception){
-            obj = JSONObject(FileMan().offlineInputStream(this))
+            JSONObject(FileMan().offlineInputStream(this))
         }
         // fetch JSONArray named users by using getJSONArray
         val userArray = obj.getJSONArray("db_youtube")
+        Log.d("debugList","userArray: $userArray")
         // implement for loop for getting users data i.e. name, email and contact
         val objContent =  userArray.getJSONObject(int)
+        Log.d("debugList","objContent: $objContent")
         val contentArray = objContent.getJSONArray(string)
-        for (i in 0 until userArray.length()) {
+        Log.d("debugList","contentArray: $contentArray")
+        for (i in 0 until contentArray.length()) {
             // create a JSONObject for fetching single user data
-            userDetail = userArray.getJSONObject(i)
-
-            val m = MathFunc()
-            judul.add(try {
+            userDetail = contentArray.getJSONObject(i)
+            Log.d("debugList","userDetail: $userDetail")
+            val j = try {
                 userDetail.getString("judul")
             } catch (e: Exception) {
                 "0"
-            })
-            tag.add(try {
+            }
+            judul.add(j)
+            val t = try {
                 userDetail.getString("tag")
             } catch (e: Exception) {
                 "0"
-            })
-            id.add(try {
-                userDetail.getString("id")
+            }
+            tag.add(t)
+            val d = try {
+                userDetail.getString("id").toInt()
             } catch (e: Exception) {
-                "0"
-            })
-            videoId.add(try {
+                0
+            }
+            id.add(d)
+            val v = try {
                 userDetail.getString("video_id")
             } catch (e: Exception) {
                 "0"
-            })
+            }
+            videoId.add(v)
 
-            val model = ModelList(id[i], judul[i], tag[i], videoId[i])
+            Log.d("debugList", "judul=$j || tag=$t || id=$d || video=$v")
+
             //bind all strings in an array
-            arrayList.add(model)
+            arrayList.add(ModelList(id[i], judul[i], tag[i], videoId[i]))
 
+            /*
             //pass results to listViewAdapter class
-            adapter = ListViewAdapter(this, arrayList)
+            adapter = ListViewAdapter(this, id, judul, tag, videoId)
             //bind the adapter to the listview
             listView?.adapter = adapter
-
+            */
         }
-
+        makeList()
+        Log.d("debugList","id: $id")
+        Log.d("debugList","judul: $judul")
+        Log.d("debugList","tag: $tag")
+        Log.d("debugList","videoId: $videoId")
     }
 }

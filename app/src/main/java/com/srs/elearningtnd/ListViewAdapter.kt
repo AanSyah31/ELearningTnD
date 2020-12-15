@@ -2,38 +2,45 @@ package com.srs.elearningtnd
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import es.dmoral.toasty.Toasty
+import android.widget.ArrayAdapter
+import android.widget.TextView
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 
-class ListViewAdapter(private val context: Activity, private val tanggal: Array<String>, private val afdeling: Array<String>, private val blok: Array<String>, private val ancak: Array<String>, private val tbsKirim: Array<String>, private val id:Array<Int>)
-    : ArrayAdapter<String>(context,
-    R.layout.panen_list, blok) {
+class ListViewAdapter(
+    private val context: Activity,
+    private val id: Array<Int>,
+    private val judul: Array<String>,
+    private val tag: Array<String>,
+    private val videoId: Array<String>
+)
+    : ArrayAdapter<String>(
+    context,
+    R.layout.row,
+    judul
+) {
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "ViewHolder")
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
-        val rowView = inflater.inflate(R.layout.panen_list, null, true)
+        val rowView = inflater.inflate(R.layout.row, null, true)
 
-        val tvTanggalPanenList = rowView.findViewById(R.id.tvTanggalPanenList) as TextView
-        val tvLokasiPanenList = rowView.findViewById(R.id.tvLokasiPanenList) as TextView
-        val tvTbsPanenList = rowView.findViewById(R.id.tvTbsPanenList) as TextView
-        val deleteListPanen = rowView.findViewById(R.id.deleteListPanen) as ImageView
+        val tvJudul = rowView.findViewById(R.id.tv_judulYoutube) as TextView
+        val tvTag = rowView.findViewById(R.id.tv_tagYoutube) as TextView
+        val yt = rowView.findViewById(R.id.id_youtube) as YouTubePlayerView
 
-        val linearLayoutPanenList = rowView.findViewById(R.id.linearLayoutPanenList) as LinearLayout
-
-        if (position % 2 == 0){
-            linearLayoutPanenList.setBackgroundResource(R.color.white)
-        } else {
-            linearLayoutPanenList.setBackgroundResource(R.color.colorGreenList)
-        }
-
-        tvTanggalPanenList.text = tanggal[position]
-        tvLokasiPanenList.text = "${afdeling[position]} > ${blok[position]} > ${ancak[position]}"
-        tvTbsPanenList.text = "${tbsKirim[position]} Buah"
+        tvJudul.text = judul[position]
+        tvTag.text = tag[position]
+        yt.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val video = videoId[position]
+                youTubePlayer.loadVideo(video, 0f)
+            }
+        })
         return rowView
     }
 
