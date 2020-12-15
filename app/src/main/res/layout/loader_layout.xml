@@ -59,7 +59,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:contentDescription="@string/logo_ssms" />
+            android:contentDescription="Logo E-Learning" />
 
         <View
             android:layout_width="0dp"
@@ -75,7 +75,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="130dp"
         android:layout_marginEnd="32dp"
-        android:text="@string/update_desc"
+        android:text="Pastikan jaringan anda stabil atau matikan jaringan untuk menggunakan mode offline"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"

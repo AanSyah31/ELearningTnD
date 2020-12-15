@@ -3,6 +3,7 @@ package com.srs.elearningtnd
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.srs.elearningtnd.Utilities.Loading
 import kotlinx.android.synthetic.main.activity_modul_digital.*
 import kotlinx.android.synthetic.main.list_menu.view.*
 
@@ -31,7 +32,8 @@ class ModulDigital : AppCompatActivity() {
         }
 
         softSkill.cardMenu.setOnClickListener {
-            val intent = Intent(this@ModulDigital, ListVideo::class.java)
+            val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", "soft_skill")
             startActivity(intent)
         }
     }

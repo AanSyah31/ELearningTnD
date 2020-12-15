@@ -24,12 +24,13 @@ class ListVideo : AppCompatActivity() {
     var arrayList = ArrayList<ModelList>()
     var judul = ArrayList<String>()
     var tag = ArrayList<String>()
-    var id = java.util.ArrayList<String>()
+    var id = ArrayList<String>()
+    var videoId = ArrayList<String>()
     lateinit var userDetail: JSONObject
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_soft_skill)
+        setContentView(R.layout.activity_listview)
 
         listView = findViewById(R.id.listView)
 
@@ -41,7 +42,7 @@ class ListVideo : AppCompatActivity() {
         lottieList.loop(true)
         lottieList.playAnimation()
 
-        val viewType = intent.getStringExtra("ViewType")
+        val viewType = intent.getStringExtra("network")
         FileMan().deleteFiles("CACHE", this)
 
         if (intent != null) {
@@ -55,12 +56,12 @@ class ListVideo : AppCompatActivity() {
                             offline()
                         } catch (e:Exception){
                             Toasty.error(this, "Database offline error! $e").show()
-                            val intent = Intent(this@ListVideo, Menu::class.java)
+                            val intent = Intent(this, Menu::class.java)
                             startActivity(intent)
                         }
                     }
                 }
-                Log.d("viewtype", "Online")
+                Log.d("network", "Online")
             } else if (viewType == "Offline") {
                 if (intent != null) {
                     linear_listView.visibility = View.GONE
@@ -73,45 +74,46 @@ class ListVideo : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
-                Log.d("viewtype", "Offline")
+                Log.d("network", "Offline")
             }
         }
     }
 
     fun online(){
-        when (intent.getStringExtra("View")!!) {
-            "db_softskill" -> {
-                parseJSONdata(FileMan().onlineInputStream(Database.data_softSkill, this, tv_tanggal))
+        when (intent.getStringExtra("ViewType")!!) {
+            "soft_skill" -> {
+                Log.d("debugList", "soft_skill")
+                parseJSONdata(0,"db_softskill")
                 bt_update.setOnClickListener {
                     UpdateMan().updater(Database.data_softSkill, this, bt_update, tv_tanggal, progressBarHolderListView, "db_softskill", "update")
                 }
             }
-            "db_estate" -> {
-                parseJSONdata(FileMan().onlineInputStream(Database.data_estate, this, tv_tanggal))
+            "estate" -> {
+                parseJSONdata(1,"db_estate")
                 bt_update.setOnClickListener {
                     UpdateMan().updater(Database.data_estate, this, bt_update, tv_tanggal, progressBarHolderListView, "db_estate", "update")
                 }
             }
-            "db_admin" -> {
-                parseJSONdata(FileMan().onlineInputStream(Database.data_admin, this, tv_tanggal))
+            "admin" -> {
+                parseJSONdata(2,"db_admin")
                 bt_update.setOnClickListener {
                     UpdateMan().updater(Database.data_admin, this, bt_update, tv_tanggal, progressBarHolderListView, "db_admin", "update")
                 }
             }
-            "db_mill" -> {
-                parseJSONdata(FileMan().onlineInputStream(Database.data_mill, this, tv_tanggal))
+            "mill" -> {
+                parseJSONdata(3,"db_mill")
                 bt_update.setOnClickListener {
                     UpdateMan().updater(Database.data_mill, this, bt_update, tv_tanggal, progressBarHolderListView, "db_mill", "update")
                 }
             }
-            "db_traksi" -> {
-                parseJSONdata(FileMan().onlineInputStream(Database.data_traksi, this, tv_tanggal))
+            "traksi" -> {
+                parseJSONdata(4,"db_traksi")
                 bt_update.setOnClickListener {
                     UpdateMan().updater(Database.data_traksi, this, bt_update, tv_tanggal, progressBarHolderListView, "db_traksi", "update")
                 }
             }
-            "db_supporting" -> {
-                parseJSONdata(FileMan().onlineInputStream(Database.data_supporting, this, tv_tanggal))
+            "supporting" -> {
+                parseJSONdata(5,"db_supporting")
                 bt_update.setOnClickListener {
                     UpdateMan().updater(Database.data_supporting, this, bt_update, tv_tanggal, progressBarHolderListView, "db_supporting", "update")
                 }
@@ -120,24 +122,24 @@ class ListVideo : AppCompatActivity() {
     }
 
     fun offline(){
-        when (intent.getStringExtra("View")!!) {
-            "db_softskill" -> {
-                parseJSONdata(FileMan().offlineInputStream(Database.data_softSkill, this))
+        when (intent.getStringExtra("ViewType")) {
+            "soft_skill" -> {
+                parseJSONdata(0,"db_softskill")
             }
             "db_estate" -> {
-                parseJSONdata(FileMan().offlineInputStream(Database.data_estate, this))
+                parseJSONdata(0,"db_softskill")
             }
             "db_admin" -> {
-                parseJSONdata(FileMan().offlineInputStream(Database.data_admin, this))
+                parseJSONdata(0,"db_softskill")
             }
             "db_mill" -> {
-                parseJSONdata(FileMan().offlineInputStream(Database.data_mill, this))
+                parseJSONdata(0,"db_softskill")
             }
             "db_traksi" -> {
-                parseJSONdata(FileMan().offlineInputStream(Database.data_traksi, this))
+                parseJSONdata(0,"db_softskill")
             }
             "db_supporting" -> {
-                parseJSONdata(FileMan().offlineInputStream(Database.data_supporting, this))
+                parseJSONdata(0,"db_softskill")
             }
         }
     }
@@ -171,28 +173,47 @@ class ListVideo : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun parseJSONdata(json: String?) {
+    fun parseJSONdata(int: Int, string: String) {
         // since we have JSON object, so we are getting the object
         //here we are calling a function and that function is returning the JSON object
-        val obj = JSONObject(json!!)
+        var obj: JSONObject
+        try {
+            obj = JSONObject(FileMan().onlineInputStream(this))
+        }catch (e:Exception){
+            obj = JSONObject(FileMan().offlineInputStream(this))
+        }
         // fetch JSONArray named users by using getJSONArray
-        val userArray = obj.getJSONArray("Blok")
+        val userArray = obj.getJSONArray("db_youtube")
         // implement for loop for getting users data i.e. name, email and contact
-        val userArrayLabel = obj.getJSONArray("DataLabelBlok")
+        val objContent =  userArray.getJSONObject(int)
+        val contentArray = objContent.getJSONArray(string)
         for (i in 0 until userArray.length()) {
             // create a JSONObject for fetching single user data
             userDetail = userArray.getJSONObject(i)
 
             val m = MathFunc()
-            judul.add(m.arrayAdder(userDetail, 1))
-            tag.add(m.arrayAdder(userDetail, 1))
+            judul.add(try {
+                userDetail.getString("judul")
+            } catch (e: Exception) {
+                "0"
+            })
+            tag.add(try {
+                userDetail.getString("tag")
+            } catch (e: Exception) {
+                "0"
+            })
             id.add(try {
-                userDetail.getString("0")
+                userDetail.getString("id")
+            } catch (e: Exception) {
+                "0"
+            })
+            videoId.add(try {
+                userDetail.getString("video_id")
             } catch (e: Exception) {
                 "0"
             })
 
-            val model = ModelList(id[i], judul[i], tag[i])
+            val model = ModelList(id[i], judul[i], tag[i], videoId[i])
             //bind all strings in an array
             arrayList.add(model)
 

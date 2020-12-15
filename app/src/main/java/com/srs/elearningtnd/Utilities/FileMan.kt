@@ -8,7 +8,6 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.StrictMode
 import android.widget.RelativeLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.drawToBitmap
 import java.io.*
@@ -19,9 +18,8 @@ import java.util.zip.ZipInputStream
 
 class FileMan {
 
-    fun offlineInputStream(jsonName: String, context: Context): String? {
-        unzipAsset(jsonName, context)
-        val d = context.getExternalFilesDir(null)?.absolutePath +"/OFFLINE/"+jsonName
+    fun offlineInputStream(context: Context): String? {
+        val d = context.getExternalFilesDir(null)?.absolutePath +"/OFFLINE/"+"data_youtube.json"
         val json: String?
         val charset: Charset = Charsets.UTF_8
         try {
@@ -64,8 +62,8 @@ class FileMan {
     }
 
 
-    fun onlineInputStream(fileName: String, context: Context, tv_tanggal: TextView): String{
-        val dirMain = context.getExternalFilesDir(null)?.absolutePath +"/MAIN/"+fileName
+    fun onlineInputStream(context: Context): String{
+        val dirMain = context.getExternalFilesDir(null)?.absolutePath +"/MAIN/"+"data_youtube.json"
         //UpdateMan().setLastUpdateText(tv_tanggal, dirMain)
         val json: String?
         val charset: Charset = Charsets.UTF_8
