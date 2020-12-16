@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:outlineSpotShadowColor="@color/white"
             android:outlineAmbientShadowColor="@color/white"
+            android:scrollbars="none"
             android:elevation="0dp"
             android:divider="#00FFFFFF"
             android:dividerHeight="0dp"

@@ -10,6 +10,11 @@
     android:background="@color/border_lightgreen1"
     tools:context=".MainMenu">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -98,44 +103,47 @@
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tentangKamiMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="60dp">
+
+            <TextView
+                android:id="@+id/tv_ELearning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Learning"
+                android:textSize="28sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_TnD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Training and Development"
+                android:textSize="26sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PT SSMS Tbk"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/helvetica"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/tentangKamiMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="MissingConstraints"
-        android:layout_marginBottom="60dp">
-
-        <TextView
-            android:id="@+id/tv_ELearning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="E-Learning"
-            android:textSize="28sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/helvetica"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/tv_TnD"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Training and Development"
-            android:textSize="26sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/helvetica"
-            android:textStyle="bold" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PT SSMS Tbk"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/helvetica"
-            android:textStyle="bold" />
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

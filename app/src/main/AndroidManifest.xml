@@ -30,19 +30,19 @@
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".MainMenu"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".ModulDigital"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".TentangKami"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".ListVideo"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".Utilities.Loading"
