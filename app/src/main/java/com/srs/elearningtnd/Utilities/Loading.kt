@@ -6,15 +6,29 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
 import com.srs.elearningtnd.ListVideo
+import com.srs.elearningtnd.MainMenu
 import com.srs.elearningtnd.R
+import com.srs.elearningtnd.Splash
+import kotlinx.android.synthetic.main.activity_loading.*
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.loader_layout.*
+import kotlinx.android.synthetic.main.loader_layout.tv_hint_loading
+import kotlinx.android.synthetic.main.loader_layout.view.*
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.File
 import java.util.*
 
@@ -25,10 +39,64 @@ class Loading : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
+        checkdata()
+    }
 
-        if (intent != null) {
-            loadFile()
-        }
+    private fun checkdata(){
+        loading.tv_hint_loading.text = "Update data..." //setting text hint progressbar
+        //method volley buat login (POST data to PHP)
+        @Suppress("UNUSED_ANONYMOUS_PARAMETER") val strReq: StringRequest =
+            object : StringRequest(
+                Method.POST,
+                "https://palmsentry.srs-ssms.com/test_md5.php",
+                Response.Listener { response ->
+                    try {
+                        val jObj = JSONObject(response)
+                        val hex = jObj.getString("hex")
+                        val mainCheck = try {
+                            UpdateMan().md5Checksum(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_youtube.json")
+                        }catch (e:Exception){
+                            ""
+                        }
+                        // Check for error node in json
+                        if (hex == mainCheck) {
+                            Log.d("yt","loading sama")
+                            loadFile()
+                        } else {
+                            Log.d("yt","loading beda")
+                            val fDelete = File(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_youtube.json")
+                            if (fDelete.exists()) {
+                                Log.d("yt","loading deleted")
+                                fDelete.delete()
+                            }
+                            loadFile()
+                        }
+                    } catch (e: JSONException) {
+                        AlertDialogUtility.withSingleAction(
+                            this, "Ulang", "Data error, hubungi pengembang: $e", "warning.json"
+                        ) {
+                            val intent = Intent(this, MainMenu::class.java)
+                            startActivity(intent)
+                        }
+                        e.printStackTrace()
+                    }
+                },
+                Response.ErrorListener { error ->
+                    AlertDialogUtility.withSingleAction(
+                        this,
+                        "Ulang",
+                        "Terjadi kesalahan koneksi",
+                        "network_error.json"
+                    ) {
+//                    val intent = Intent(this@Login, Splash::class.java)
+//                    startActivity(intent)
+                    }
+                }) {
+                override fun getParams(): Map<String, String> {
+                    return HashMap()
+                }
+            }
+        Volley.newRequestQueue(this).add(strReq)
     }
 
     private fun loadAnim() {
@@ -45,6 +113,7 @@ class Loading : AppCompatActivity() {
     @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     fun loadFile() {
         val viewType = intent.getStringExtra("ViewType")
+        Log.d("yt","loading $viewType")
         val filePath = this.getExternalFilesDir(null)?.absolutePath + "/MAIN/"
         val f = File(filePath + "data_youtube.json")
         if ((!f.exists())) {
@@ -72,6 +141,7 @@ class Loading : AppCompatActivity() {
                 .start(object : OnDownloadListener {
                     @RequiresApi(Build.VERSION_CODES.O)
                     override fun onDownloadComplete() {
+                        Log.d("yt","loading dl komplit")
                         val intent = Intent(this@Loading, ListVideo::class.java)
                         intent.putExtra("ViewType", viewType)
                         intent.putExtra("network", "Online")
@@ -79,10 +149,12 @@ class Loading : AppCompatActivity() {
                         overridePendingTransition(0, 0)
                     }
                     override fun onError(error: com.downloader.Error?) {
+                        Log.d("yt","loading dl error")
                         offlineLoading()
                     }
                 })
         } else if (f.exists()) {
+            Log.d("yt","loading ke list video")
             val intent = Intent(this@Loading, ListVideo::class.java)
             intent.putExtra("ViewType", viewType)
             intent.putExtra("network", "Online")

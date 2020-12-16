@@ -12,9 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import com.bumptech.glide.Glide
 import com.srs.elearningtnd.Utilities.AlertDialogUtility
-import com.srs.elearningtnd.Utilities.Database
 import com.srs.elearningtnd.Utilities.FileMan
-import com.srs.elearningtnd.Utilities.UpdateMan
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_listview.*
 import org.json.JSONObject
@@ -49,7 +47,8 @@ class ListVideo : AppCompatActivity() {
         val vt = intent.getStringExtra("ViewType")
         tv_list.text = vt
         FileMan().deleteFiles("CACHE", this)
-
+        Log.d("yt","list masuk list")
+        Log.d("yt","list $network")
         if (intent != null) {
             if (network == "Online") {
                 if (intent != null) {
@@ -116,9 +115,6 @@ class ListVideo : AppCompatActivity() {
             "Soft Skill" -> {
                 Log.d("debugList", "soft_skill")
                 parseJSONdata("Soft Skill")
-                /*bt_update.setOnClickListener {
-                    UpdateMan().updater(Database.data_softSkill, this, bt_update, tv_tanggal, progressBarHolderListView, "Soft Skill", "update")
-                }*/
             }
             "Estate" -> {
                 parseJSONdata("Estate")
@@ -195,6 +191,7 @@ class ListVideo : AppCompatActivity() {
     }
 
     private fun parseJSONdata(string: String) {
+        Log.d("yt","list $string")
         // since we have JSON object, so we are getting the object
         //here we are calling a function and that function is returning the JSON object
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val obj: JSONObject = try {
@@ -204,23 +201,24 @@ class ListVideo : AppCompatActivity() {
         }
         // fetch JSONArray named users by using getJSONArray
         val userArray = obj.getJSONArray("db_youtube")
-        Log.d("debugList","userArray: $userArray")
+        Log.d("yt","userArray: $userArray")
         // implement for loop for getting users data i.e. name, email and contact
         for (i in 0 until userArray.length()) {
             // create a JSONObject for fetching single user data
             userDetail = userArray.getJSONObject(i)
-            Log.d("debugList","userDetail: $userDetail")
             val s = try {
                 userDetail.getString("kategori")
             } catch (e: Exception) {
                 "0"
             }
+            Log.d("yt","list s $s")
             if (s == string){
                 val j = try {
                     userDetail.getString("judul")
                 } catch (e: Exception) {
                     "0"
                 }
+                Log.d("yt","list j $j")
                 judul.add(j)
                 val t = try {
                     userDetail.getString("tag")
@@ -243,15 +241,8 @@ class ListVideo : AppCompatActivity() {
                 Log.d("debugList", "judul=$j || tag=$t || id=$d || video=$v")
 
                 //bind all strings in an array
-                arrayList.add(ModelList(id[i], judul[i], tag[i], videoId[i]))
+                arrayList.add(ModelList(d, j, t, v))
             }
-
-            /*
-            //pass results to listViewAdapter class
-            adapter = ListViewAdapter(this, id, judul, tag, videoId)
-            //bind the adapter to the listview
-            listView?.adapter = adapter
-            */
         }
         if (arrayList.isNotEmpty()){
             val thread = Thread {

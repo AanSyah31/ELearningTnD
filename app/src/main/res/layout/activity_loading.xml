@@ -7,6 +7,8 @@
     android:background="@color/white"
     tools:context=".Utilities.Loading">
 
-    <include layout="@layout/loader_layout"/>
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loader_layout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
