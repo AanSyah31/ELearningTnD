@@ -22,14 +22,46 @@
         app:showVideoDuration="true"
         android:id="@+id/id_youtube"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:id="@+id/tv_judulYoutube"
-        android:fontFamily="@font/helvetica"
-        android:textColor="@color/black"
-        android:textSize="23sp"/>
+        android:orientation="vertical"
+        android:id="@+id/headerList">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:background="@color/white"
+            android:id="@+id/linear_listView"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/bt_full"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_fullscreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tv_judulYoutube"
+                android:fontFamily="@font/helvetica"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/bt_back"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
