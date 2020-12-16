@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".Search"></activity>
         <activity
             android:name=".Splash"
             android:screenOrientation="sensorPortrait"
@@ -47,9 +47,10 @@
         <activity
             android:name=".Utilities.Loading"
             android:theme="@style/materialWhiteBar" />
-        <activity android:name=".VideoYT"
-            android:theme="@style/FullScreen"
-            android:screenOrientation="sensorLandscape"/>
+        <activity
+            android:name=".VideoYT"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/FullScreen" />
     </application>
 
 </manifest>

@@ -1,100 +1,95 @@
 ﻿{
 "db_youtube":[
   {
-    "db_softskill":[
-      {
-        "id": "",
-        "video_id": "",
-        "judul": "",
-        "tag": ""
-      }
-    ]
+    "id": "",
+    "video_id": "",
+    "judul": "",
+    "tag": "",
+    "kategori": "db_softskill"
   },
   {
-     "db_estate":[
-       {
-         "id": "1",
-         "video_id": "-Sh4HVxb65c&t=3s",
-         "judul": "Chipping Pohon Kelapa Sawit",
-         "tag": "Chipping, Kelapa Sawit"
-       },
-       {
-         "id": "2",
-         "video_id": "ZAyV8hsiMuw",
-         "judul": "Sensus UPDKS",
-         "tag": "Sensus, UPDKS"
-       },
-       {
-         "id": "3",
-         "video_id": "2Bd_BrDZFIU",
-         "judul": "Deteksi Hama Kelapa Sawit",
-         "tag": "Hama, Kelapa Sawit"
-       },
-       {
-         "id": "4",
-         "video_id": "6VTAUWQShq0",
-         "judul": "PMMP Mutu Buah",
-         "tag": "Mutu Buah"
-       },
-       {
-         "id": "5",
-         "video_id": "J_Rn9uAErvU",
-         "judul": "PMMP Mutu Ancak",
-         "tag": "Mutu Ancak"
-       },
-       {
-         "id": "6",
-         "video_id": "uWXxxOrzy9k",
-         "judul": "PMMP Sensus AKP",
-         "tag": "Sensus AKP"
-       },
-       {
-         "id": "7",
-         "video_id": "9dZ7Od0oSsI&t=23s",
-         "judul": "PMMP Kerani Panen",
-         "tag": "Kerani Panen"
-       }
-     ]
-   },
-   {
-      "db_admin":[
-        {
-          "id": "",
-          "video_id": "",
-          "judul": "",
-          "tag": ""
-        }
-      ]
-    },
-    {
-       "db_mill":[
-         {
-           "id": "",
-           "video_id": "",
-           "judul": "",
-           "tag": ""
-         }
-       ]
-     },
-     {
-        "db_traksi":[
-          {
-            "id": "",
-            "video_id": "",
-            "judul": "",
-            "tag": ""
-          }
-        ]
-      },
-      {
-         "db_supporting":[
-           {
-             "id": "",
-             "video_id": "",
-             "judul": "",
-             "tag": ""
-           }
-         ]
-       }
+    "id": "1",
+    "video_id": "-Sh4HVxb65c&t=3s",
+    "judul": "Chipping Pohon Kelapa Sawit",
+    "tag": "Chipping, Kelapa Sawit",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "2",
+    "video_id": "ZAyV8hsiMuw",
+    "judul": "Sensus UPDKS",
+    "tag": "Sensus, UPDKS",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "3",
+    "video_id": "2Bd_BrDZFIU",
+    "judul": "Deteksi Hama Kelapa Sawit",
+    "tag": "Hama, Kelapa Sawit",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "3",
+    "video_id": "2Bd_BrDZFIU",
+    "judul": "Deteksi Hama Kelapa Sawit",
+    "tag": "Hama, Kelapa Sawit",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "4",
+    "video_id": "6VTAUWQShq0",
+    "judul": "PMMP Mutu Buah",
+    "tag": "Mutu Buah",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "5",
+    "video_id": "J_Rn9uAErvU",
+    "judul": "PMMP Mutu Ancak",
+    "tag": "Mutu Ancak",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "6",
+    "video_id": "uWXxxOrzy9k",
+    "judul": "PMMP Sensus AKP",
+    "tag": "Sensus AKP",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "7",
+    "video_id": "9dZ7Od0oSsI&t=23s",
+    "judul": "PMMP Kerani Panen",
+    "tag": "Kerani Panen",
+    "kategori": "db_estate"
+  },
+  {
+    "id": "",
+    "video_id": "",
+    "judul": "",
+    "tag": "",
+    "kategori": "db_admin"
+  },
+  {
+    "id": "",
+    "video_id": "",
+    "judul": "",
+    "tag": "",
+    "kategori": "db_mill"
+  },
+  {
+    "id": "",
+    "video_id": "",
+    "judul": "",
+    "tag": "",
+    "kategori": "db_traksi"
+  },
+  {
+    "id": "",
+    "video_id": "",
+    "judul": "",
+    "tag": "",
+    "kategori": "db_supporting"
+  }
   ]
 }
