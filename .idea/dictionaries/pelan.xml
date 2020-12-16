@@ -2,6 +2,10 @@
   <dictionary name="pelan">
     <words>
       <w>judul</w>
+      <w>kategori</w>
+      <w>modul</w>
+      <w>softskill</w>
+      <w>traksi</w>
     </words>
   </dictionary>
 </component>

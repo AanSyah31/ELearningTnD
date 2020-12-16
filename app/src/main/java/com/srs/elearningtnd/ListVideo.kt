@@ -1,17 +1,20 @@
+@file:Suppress("DEPRECATION")
+
 package com.srs.elearningtnd
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.Menu
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import com.bumptech.glide.Glide
-import com.srs.elearningtnd.Utilities.*
+import com.srs.elearningtnd.Utilities.AlertDialogUtility
+import com.srs.elearningtnd.Utilities.Database
+import com.srs.elearningtnd.Utilities.FileMan
+import com.srs.elearningtnd.Utilities.UpdateMan
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_listview.*
 import org.json.JSONObject
@@ -19,7 +22,6 @@ import org.json.JSONObject
 class ListVideo : AppCompatActivity() {
 
     var listViewV: ListView? = null
-    var adapter: ListViewAdapter? = null
     var i = 0
     var search: String? = ""
     var arrayList = ArrayList<ModelList>()
@@ -43,27 +45,29 @@ class ListVideo : AppCompatActivity() {
         lottieList.loop(true)
         lottieList.playAnimation()
 
-        val viewType = intent.getStringExtra("network")
+        val network = intent.getStringExtra("network")
+        val vt = intent.getStringExtra("ViewType")
+        tv_list.text = vt
         FileMan().deleteFiles("CACHE", this)
 
         if (intent != null) {
-            if (viewType == "Online") {
+            if (network == "Online") {
                 if (intent != null) {
                     try {
                         online()
                     } catch (e:Exception){
-                        Toasty.error(this, "Database online error! $e").show()
+                        //Toasty.error(this, "Database online error! $e").show()
                         try {
                             offline()
                         } catch (e:Exception){
                             Toasty.error(this, "Database offline error! $e").show()
-                            val intent = Intent(this, Menu::class.java)
+                            val intent = Intent(this, MainMenu::class.java)
                             startActivity(intent)
                         }
                     }
                 }
                 Log.d("network", "Online")
-            } else if (viewType == "Offline") {
+            } else if (network == "Offline") {
                 if (intent != null) {
                     linear_listView.visibility = View.GONE
                     AlertDialogUtility.alertDialog(this, "Hubungkan Perangkat anda ke jaringan yang stabil untuk memperbaharui data!", "network_error.json")
@@ -71,7 +75,7 @@ class ListVideo : AppCompatActivity() {
                         online()
                     } catch (e:Exception){
                         Toasty.error(this, "Database offline error! $e").show()
-                        val intent = Intent(this, Menu::class.java)
+                        val intent = Intent(this, MainMenu::class.java)
                         startActivity(intent)
                     }
                 }
@@ -107,67 +111,55 @@ class ListVideo : AppCompatActivity() {
         listView?.adapter = myListAdapter
     }
 
-    fun online(){
+    private fun online(){
         when (intent.getStringExtra("ViewType")!!) {
-            "soft_skill" -> {
+            "Soft Skill" -> {
                 Log.d("debugList", "soft_skill")
-                parseJSONdata(0,"db_softskill")
-                bt_update.setOnClickListener {
-                    UpdateMan().updater(Database.data_softSkill, this, bt_update, tv_tanggal, progressBarHolderListView, "db_softskill", "update")
-                }
+                parseJSONdata("Soft Skill")
+                /*bt_update.setOnClickListener {
+                    UpdateMan().updater(Database.data_softSkill, this, bt_update, tv_tanggal, progressBarHolderListView, "Soft Skill", "update")
+                }*/
             }
-            "estate" -> {
-                parseJSONdata(1,"db_estate")
-                bt_update.setOnClickListener {
-                    UpdateMan().updater(Database.data_estate, this, bt_update, tv_tanggal, progressBarHolderListView, "db_estate", "update")
-                }
+            "Estate" -> {
+                parseJSONdata("Estate")
             }
-            "admin" -> {
-                parseJSONdata(2,"db_admin")
-                bt_update.setOnClickListener {
-                    UpdateMan().updater(Database.data_admin, this, bt_update, tv_tanggal, progressBarHolderListView, "db_admin", "update")
-                }
+            "Admin" -> {
+                parseJSONdata("Admin")
             }
-            "mill" -> {
-                parseJSONdata(3,"db_mill")
-                bt_update.setOnClickListener {
-                    UpdateMan().updater(Database.data_mill, this, bt_update, tv_tanggal, progressBarHolderListView, "db_mill", "update")
-                }
+            "Mill" -> {
+                parseJSONdata("Mill")
             }
-            "traksi" -> {
-                parseJSONdata(4,"db_traksi")
-                bt_update.setOnClickListener {
-                    UpdateMan().updater(Database.data_traksi, this, bt_update, tv_tanggal, progressBarHolderListView, "db_traksi", "update")
-                }
+            "Traksi" -> {
+                parseJSONdata("Traksi")
             }
-            "supporting" -> {
-                parseJSONdata(5,"db_supporting")
-                bt_update.setOnClickListener {
-                    UpdateMan().updater(Database.data_supporting, this, bt_update, tv_tanggal, progressBarHolderListView, "db_supporting", "update")
-                }
+            "Supporting" -> {
+                parseJSONdata("Supporting")
+            }
+            else -> {
+                print("x is neither 1 nor 2")
             }
         }
     }
 
-    fun offline(){
+    private fun offline(){
         when (intent.getStringExtra("ViewType")) {
             "soft_skill" -> {
-                parseJSONdata(0,"db_softskill")
+                parseJSONdata("db_softskill")
             }
             "estate" -> {
-                parseJSONdata(0,"db_estate")
+                parseJSONdata("db_estate")
             }
             "admin" -> {
-                parseJSONdata(0,"db_admin")
+                parseJSONdata("db_admin")
             }
             "mill" -> {
-                parseJSONdata(0,"db_mill")
+                parseJSONdata("db_mill")
             }
             "traksi" -> {
-                parseJSONdata(0,"db_traksi")
+                parseJSONdata("db_traksi")
             }
             "supporting" -> {
-                parseJSONdata(0,"db_supporting")
+                parseJSONdata("db_supporting")
             }
         }
     }
@@ -202,10 +194,10 @@ class ListVideo : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun parseJSONdata(int: Int, string: String) {
+    private fun parseJSONdata(string: String) {
         // since we have JSON object, so we are getting the object
         //here we are calling a function and that function is returning the JSON object
-        val obj: JSONObject = try {
+        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val obj: JSONObject = try {
             JSONObject(FileMan().onlineInputStream(this))
         }catch (e:Exception){
             JSONObject(FileMan().offlineInputStream(this))
@@ -214,43 +206,45 @@ class ListVideo : AppCompatActivity() {
         val userArray = obj.getJSONArray("db_youtube")
         Log.d("debugList","userArray: $userArray")
         // implement for loop for getting users data i.e. name, email and contact
-        val objContent =  userArray.getJSONObject(int)
-        Log.d("debugList","objContent: $objContent")
-        val contentArray = objContent.getJSONArray(string)
-        Log.d("debugList","contentArray: $contentArray")
-        for (i in 0 until contentArray.length()) {
+        for (i in 0 until userArray.length()) {
             // create a JSONObject for fetching single user data
-            userDetail = contentArray.getJSONObject(i)
+            userDetail = userArray.getJSONObject(i)
             Log.d("debugList","userDetail: $userDetail")
-            val j = try {
-                userDetail.getString("judul")
+            val s = try {
+                userDetail.getString("kategori")
             } catch (e: Exception) {
                 "0"
             }
-            judul.add(j)
-            val t = try {
-                userDetail.getString("tag")
-            } catch (e: Exception) {
-                "0"
-            }
-            tag.add(t)
-            val d = try {
-                userDetail.getString("id").toInt()
-            } catch (e: Exception) {
-                0
-            }
-            id.add(d)
-            val v = try {
-                userDetail.getString("video_id")
-            } catch (e: Exception) {
-                "0"
-            }
-            videoId.add(v)
+            if (s == string){
+                val j = try {
+                    userDetail.getString("judul")
+                } catch (e: Exception) {
+                    "0"
+                }
+                judul.add(j)
+                val t = try {
+                    userDetail.getString("tag")
+                } catch (e: Exception) {
+                    "0"
+                }
+                tag.add(t)
+                val d = try {
+                    userDetail.getString("id").toInt()
+                } catch (e: Exception) {
+                    0
+                }
+                id.add(d)
+                val v = try {
+                    userDetail.getString("video_id")
+                } catch (e: Exception) {
+                    "0"
+                }
+                videoId.add(v)
+                Log.d("debugList", "judul=$j || tag=$t || id=$d || video=$v")
 
-            Log.d("debugList", "judul=$j || tag=$t || id=$d || video=$v")
-
-            //bind all strings in an array
-            arrayList.add(ModelList(id[i], judul[i], tag[i], videoId[i]))
+                //bind all strings in an array
+                arrayList.add(ModelList(id[i], judul[i], tag[i], videoId[i]))
+            }
 
             /*
             //pass results to listViewAdapter class
@@ -259,12 +253,14 @@ class ListVideo : AppCompatActivity() {
             listView?.adapter = adapter
             */
         }
-        val thread = Thread {
-            runOnUiThread{
-                makeList()
+        if (arrayList.isNotEmpty()){
+            val thread = Thread {
+                runOnUiThread{
+                    makeList()
+                }
             }
+            thread.start()
         }
-        thread.start()
         Log.d("debugList","id: $id")
         Log.d("debugList","judul: $judul")
         Log.d("debugList","tag: $tag")
