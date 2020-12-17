@@ -4,27 +4,28 @@ package com.srs.elearningtnd
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
-import android.view.Menu
 import android.view.View
-import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
 import com.bumptech.glide.Glide
 import com.srs.elearningtnd.Utilities.AlertDialogUtility
 import com.srs.elearningtnd.Utilities.FileMan
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_listview.*
+import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ListVideo : AppCompatActivity() {
 
-    var listViewV: ListView? = null
     var i = 0
-    var search: String? = ""
-    var arrayList = ArrayList<ModelList>()
-    var judul = ArrayList<String>()
-    var tag = ArrayList<String>()
+    private var arrayList = ArrayList<ModelList>()
+    private var arrayListFilter = ArrayList<ModelList>()
+    private var judul = ArrayList<String>()
+    private var tag = ArrayList<String>()
     var id = ArrayList<Int>()
     var videoId = ArrayList<String>()
     lateinit var userDetail: JSONObject
@@ -32,8 +33,6 @@ class ListVideo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_listview)
-
-        listViewV = findViewById(R.id.listView)
 
         Glide.with(this)
             .load(R.drawable.logo_png_white)
@@ -45,20 +44,36 @@ class ListVideo : AppCompatActivity() {
 
         val network = intent.getStringExtra("network")
         val vt = intent.getStringExtra("ViewType")
-        tv_list.text = vt
+        et_list.setText(vt)
         FileMan().deleteFiles("CACHE", this)
-        Log.d("yt","list masuk list")
-        Log.d("yt","list $network")
+        Log.d("yt", "list masuk list")
+        Log.d("yt", "list $network")
+        et_list.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s=="") {
+                    Log.d("search","text changed kosong")
+                    makeList("")
+                } else {
+                    makeList(et_list.text.toString())
+                }
+            }
+        })
         if (intent != null) {
             if (network == "Online") {
                 if (intent != null) {
                     try {
                         online()
-                    } catch (e:Exception){
+                    } catch (e: Exception){
                         //Toasty.error(this, "Database online error! $e").show()
                         try {
                             offline()
-                        } catch (e:Exception){
+                        } catch (e: Exception){
                             Toasty.error(this, "Database offline error! $e").show()
                             val intent = Intent(this, MainMenu::class.java)
                             startActivity(intent)
@@ -69,10 +84,14 @@ class ListVideo : AppCompatActivity() {
             } else if (network == "Offline") {
                 if (intent != null) {
                     linear_listView.visibility = View.GONE
-                    AlertDialogUtility.alertDialog(this, "Hubungkan Perangkat anda ke jaringan yang stabil untuk memperbaharui data!", "network_error.json")
+                    AlertDialogUtility.alertDialog(
+                        this,
+                        "Hubungkan Perangkat anda ke jaringan yang stabil untuk memperbaharui data!",
+                        "network_error.json"
+                    )
                     try {
                         online()
-                    } catch (e:Exception){
+                    } catch (e: Exception){
                         Toasty.error(this, "Database offline error! $e").show()
                         val intent = Intent(this, MainMenu::class.java)
                         startActivity(intent)
@@ -88,24 +107,40 @@ class ListVideo : AppCompatActivity() {
         }
     }
 
-    private fun makeList(){
-        val arrayJudul = Array(arrayList.size){"null"}
-        val arrayTag = Array(arrayList.size){"null"}
-        val arrayVideoId = Array(arrayList.size){"null"}
-        val arrayId = Array(arrayList.size){0}
-        for((index, e) in arrayList.withIndex()){
-            arrayJudul[index] = e.judul
-            arrayTag[index] = e.tag
-            arrayVideoId[index] = e.videoId
-            arrayId[index] = e.id
+    private fun makeList(search: String){
+        /*var searchList = try {
+            search.split(" ").toTypedArray()
+        }catch (e: Exception){
+
+        }*/
+        val s = search.toLowerCase(Locale.getDefault())
+        arrayListFilter = arrayList
+        val arrayJudul = ArrayList<String>()
+        val arrayTag = ArrayList<String>()
+        val arrayVideoId = ArrayList<String>()
+        val arrayId = ArrayList<Int>()
+        Log.d("search","isi filter ${arrayList.toTypedArray().contentToString()}")
+
+        for((index, e) in arrayListFilter.withIndex()){
+            if (search == ""){
+                arrayJudul.add(e.judul)
+                arrayTag.add(e.tag)
+                arrayVideoId.add(e.videoId)
+                arrayId.add(e.id)
+            } else if (search != "" && e.judul.toLowerCase(Locale.getDefault()).contains(s) || e.tag.toLowerCase(Locale.getDefault()).contains(s)){
+                arrayJudul.add(e.judul)
+                arrayTag.add(e.tag)
+                arrayVideoId.add(e.videoId)
+                arrayId.add(e.id)
+            }
         }
         //creating custom ArrayAdapter
         val myListAdapter = ListViewAdapter(
             this,
-            arrayId,
-            arrayJudul,
-            arrayTag,
-            arrayVideoId
+            arrayId.toTypedArray(),
+            arrayJudul.toTypedArray(),
+            arrayTag.toTypedArray(),
+            arrayVideoId.toTypedArray()
         )
         listView?.adapter = myListAdapter
     }
@@ -132,57 +167,35 @@ class ListVideo : AppCompatActivity() {
                 parseJSONdata("Supporting")
             }
             else -> {
-                parseJSONdata("db_tag")
+                parseJSONdata("semua")
             }
         }
     }
 
     private fun offline(){
         when (intent.getStringExtra("ViewType")) {
-            "soft_skill" -> {
-                parseJSONdata("db_softskill")
+            "Soft Skill" -> {
+                parseJSONdata("Soft Skill")
             }
-            "estate" -> {
-                parseJSONdata("db_estate")
+            "Estate" -> {
+                parseJSONdata("Estate")
             }
-            "admin" -> {
-                parseJSONdata("db_admin")
+            "Admin" -> {
+                parseJSONdata("Admin")
             }
-            "mill" -> {
-                parseJSONdata("db_mill")
+            "Mill" -> {
+                parseJSONdata("Mill")
             }
-            "traksi" -> {
-                parseJSONdata("db_traksi")
+            "Traksi" -> {
+                parseJSONdata("Traksi")
             }
-            "supporting" -> {
-                parseJSONdata("db_supporting")
+            "Supporting" -> {
+                parseJSONdata("Supporting")
+            }
+            else -> {
+                parseJSONdata("semua")
             }
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        val myActionMenuItem = menu.findItem(R.id.action_search)
-        val searchView = myActionMenuItem.actionView as SearchView
-        /*searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(s: String): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(s: String): Boolean {
-                val filterChar: List<String>
-                if (TextUtils.isEmpty(s)) {
-                    adapter?.filter(filterChar)
-                    listView!!.clearTextFilter()
-                } else {
-                    adapter!!.filter(s)
-                }
-                return true
-            }
-        })*/
-        searchView.setQuery(search, true)
-        Log.d("search", search!!)
-        return true
     }
 
     override fun onBackPressed() {
@@ -211,54 +224,77 @@ class ListVideo : AppCompatActivity() {
             } catch (e: Exception) {
                 "0"
             }
-            Log.d("yt","list s $s")
+            Log.d("yt", "list s $s")
             if (s == string){
-                val j = try {
-                    userDetail.getString("judul")
-                } catch (e: Exception) {
-                    "0"
-                }
-                Log.d("yt","list j $j")
-                judul.add(j)
-                val t = try {
-                    userDetail.getString("tag")
-                } catch (e: Exception) {
-                    "0"
-                }
-                tag.add(t)
-                val d = try {
-                    userDetail.getString("id").toInt()
-                } catch (e: Exception) {
-                    0
-                }
-                id.add(d)
-                val v = try {
-                    userDetail.getString("video_id")
-                } catch (e: Exception) {
-                    "0"
-                }
-                videoId.add(v)
-                Log.d("debugList", "judul=$j || tag=$t || id=$d || video=$v")
-
-                //bind all strings in an array
-                arrayList.add(ModelList(d, j, t, v))
-
-                /*arrayList.filter { a -> !a.toString().contains("db_tag") }
-
-                arrayList.removeIf { a -> !a.toString().contains("db_tag") }*/
+                et_list.isEnabled = false
+                isiArray()
+            } else if (string == "semua"){
+                Log.d("yt", "list else semua")
+                isiArray()
             }
         }
         if (arrayList.isNotEmpty()){
-            val thread = Thread {
+            @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val thread = Thread {
                 runOnUiThread{
-                    makeList()
+                    if (string == "semua"){
+                        makeList(intent.getStringExtra("ViewType"))
+                    }else{
+                        search_vid.visibility = View.GONE
+                        makeList("")
+                    }
                 }
             }
             thread.start()
         }
-        Log.d("debugList","id: $id")
-        Log.d("debugList","judul: $judul")
-        Log.d("debugList","tag: $tag")
-        Log.d("debugList","videoId: $videoId")
+        Log.d("debugList", "id: $id")
+        Log.d("debugList", "judul: $judul")
+        Log.d("debugList", "tag: $tag")
+        Log.d("debugList", "videoId: $videoId")
+    }
+
+    private fun isiArray(){
+        val j = try {
+            userDetail.getString("judul")
+        } catch (e: Exception) {
+            "0"
+        }
+        Log.d("yt", "list j $j")
+        judul.add(j)
+        val t = try {
+            var arrayListStr = ArrayList<String>()
+            val string = userDetail.getString("db_tag")
+            val jSONArray = JSONArray(string)
+            for (i in 0 until jSONArray.length()){
+                arrayListStr.add(jSONArray.getJSONObject(i).getString("tag"))
+            }
+            arrayListStr.toTypedArray().contentToString()
+        } catch (e: Exception) {
+            "0"
+        }
+        tag.add(t)
+        val d = try {
+            userDetail.getString("id").toInt()
+        } catch (e: Exception) {
+            0
+        }
+        id.add(d)
+        val v = try {
+            userDetail.getString("video_id")
+        } catch (e: Exception) {
+            "0"
+        }
+        videoId.add(v)
+        Log.d("debugList", "judul=$j || tag=$t || id=$d || video=$v")
+
+        Log.d("debugList", "id: $d")
+        Log.d("debugList", "judul: $j")
+        Log.d("debugList", "tag: $t")
+        Log.d("debugList", "videoId: $v")
+
+        //bind all strings in an array
+        arrayList.add(ModelList(d, j, t, v))
+
+        //arrayList.filter { a -> !a.toString().contains("how") }
+        //arrayList.removeIf { a -> !a.toString().contains("how") }
     }
 }

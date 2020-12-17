@@ -18,10 +18,7 @@ import com.bumptech.glide.Glide
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
-import com.srs.elearningtnd.ListVideo
-import com.srs.elearningtnd.MainMenu
-import com.srs.elearningtnd.R
-import com.srs.elearningtnd.Splash
+import com.srs.elearningtnd.*
 import kotlinx.android.synthetic.main.activity_loading.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.loader_layout.*
@@ -88,8 +85,8 @@ class Loading : AppCompatActivity() {
                         "Terjadi kesalahan koneksi",
                         "network_error.json"
                     ) {
-//                    val intent = Intent(this@Login, Splash::class.java)
-//                    startActivity(intent)
+                    val intent = Intent(this, ModulDigital::class.java)
+                    startActivity(intent)
                     }
                 }) {
                 override fun getParams(): Map<String, String> {

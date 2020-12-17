@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import com.srs.elearningtnd.Utilities.Loading
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_modul_digital.*
@@ -37,13 +39,15 @@ class ModulDigital : AppCompatActivity() {
         cvSupporting.iconListMenu.setImageDrawable(resources.getDrawable(R.drawable.rsz_supporting))
 
         btSearchModul.setOnClickListener {
-            val searchStr = modulSearch.text.toString()
-            if (searchStr.replace(" ","").isNotEmpty()){
-                val intent = Intent(this@ModulDigital, Loading::class.java)
-                intent.putExtra("ViewType", searchStr)
-                startActivity(intent)
+            searchModul()
+        }
+
+        etModulSearch.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+                searchModul()
+                true
             } else {
-                Toasty.info(this, "Mohon isi kolom search sebelum melakukan pencarian").show()
+                false
             }
         }
 
@@ -81,6 +85,17 @@ class ModulDigital : AppCompatActivity() {
             val intent = Intent(this@ModulDigital, Loading::class.java)
             intent.putExtra("ViewType", supporting)
             startActivity(intent)
+        }
+    }
+
+    fun searchModul(){
+        val searchStr = etModulSearch.text.toString()
+        if (searchStr.replace(" ","").isNotEmpty()){
+            val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", searchStr)
+            startActivity(intent)
+        } else {
+            Toasty.info(this, "Mohon isi kolom search sebelum melakukan pencarian").show()
         }
     }
 

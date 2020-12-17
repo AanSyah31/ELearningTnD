@@ -27,6 +27,24 @@
             android:id="@+id/linear_listView"
             android:gravity="center">
 
+            <EditText
+                android:inputType="textPersonName"
+                android:id="@+id/et_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1.75"
+                android:fontFamily="@font/helvetica"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="35sp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/bt_back"
                 android:layout_width="40dp"
@@ -37,20 +55,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1.75"
-                android:fontFamily="@font/helvetica"
-                android:gravity="center"
-                android:text="Soft"
-                android:textColor="@color/black"
-                android:textSize="35sp"
+            <ImageView
+                android:id="@+id/search_vid"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/ic_baseline_search_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
