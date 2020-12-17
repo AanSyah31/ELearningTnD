@@ -132,7 +132,7 @@ class ListVideo : AppCompatActivity() {
                 parseJSONdata("Supporting")
             }
             else -> {
-                print("x is neither 1 nor 2")
+                parseJSONdata("db_tag")
             }
         }
     }
@@ -242,6 +242,10 @@ class ListVideo : AppCompatActivity() {
 
                 //bind all strings in an array
                 arrayList.add(ModelList(d, j, t, v))
+
+                /*arrayList.filter { a -> !a.toString().contains("db_tag") }
+
+                arrayList.removeIf { a -> !a.toString().contains("db_tag") }*/
             }
         }
         if (arrayList.isNotEmpty()){
