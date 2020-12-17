@@ -10,11 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:autoPlay="false"
-        app:showYouTubeButton="true"
-        app:showFullScreenButton="true"
-        app:showSeekBar="true"
-        app:showVideoCurrentTime="true"
-        app:showVideoDuration="true"
+        app:showYouTubeButton="false"
+        app:showFullScreenButton="false"
+        app:showSeekBar="false"
+        app:showVideoCurrentTime="false"
+        app:showVideoDuration="false"
         android:id="@+id/yt_full"
         tools:ignore="MissingConstraints" />
 

@@ -62,6 +62,7 @@ class Login : AppCompatActivity() {
         promptInfo = BiometricPrompt.PromptInfo.Builder() //DIALOG BUILDER FOR BIOMETRIC AUTHENTIFICATION
             .setTitle("Selamat datang " + prefManager.name + "!")
             .setSubtitle("Gunakan sidik jari untuk melanjutkan ke aplikasi")
+            .setDescription("E-LearningTnD")
             .setNegativeButtonText("Gunakan password saja")
             .build()
         val executor = Executors.newSingleThreadExecutor()
@@ -84,25 +85,16 @@ class Login : AppCompatActivity() {
     }
 
     private fun setTampilan(){
+        window.statusBarColor = Color.WHITE //ganti warna statusbar
         progressBarHolder.visibility = View.GONE //hilangkan progressbar
-        val icon = findViewById<ImageView>(R.id.icon_login)
-        Glide.with(this).load(R.drawable.rsz_icon).into(icon)
+        tvVersi.text = BuildConfig.VERSION_NAME //SETTING TEXT TO APP VERSION
 
         Glide.with(this)//GLIDE LOGO FOR LOADING LAYOUT
-            .load(R.drawable.elearning_green)
-            .into(logo_elearning)
+            .load(R.drawable.logo_png_white)
+            .into(logo_ssms)
         lottie.setAnimation("loading_circle.json")//ANIMATION WITH LOTTIE FOR LOADING LAYOUT
         lottie.loop(true)
         lottie.playAnimation()
-
-        //CHECK TRIGGER FOR SHOWING PASSWORD
-        show.setOnClickListener {
-            if (show.isChecked) {
-                etPass?.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            } else {
-                etPass?.transformationMethod = PasswordTransformationMethod.getInstance()
-            }
-        }
     }
 
     @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "UNNECESSARY_SAFE_CALL")
@@ -138,7 +130,7 @@ class Login : AppCompatActivity() {
             if (u == pmu && p == pmp){
                 loginSuccess()
             } else if (connected) {
-                onlineAuth(etUser.text.toString(), etPass.text.toString())
+                onlineAuth(etUser.text.toString().toLowerCase(Locale.getDefault()), etPass.text.toString())
             } else {
                 offlineAuth()
             }
