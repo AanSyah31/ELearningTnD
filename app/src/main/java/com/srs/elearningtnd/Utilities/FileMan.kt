@@ -19,7 +19,7 @@ import java.util.zip.ZipInputStream
 class FileMan {
 
     fun offlineInputStream(context: Context): String? {
-        val d = context.getExternalFilesDir(null)?.absolutePath +"/OFFLINE/"+"data_youtube.json"
+        val d = context.getExternalFilesDir(null)?.absolutePath +"/OFFLINE/"+"data_modul.json"
         val json: String?
         val charset: Charset = Charsets.UTF_8
         try {
@@ -63,7 +63,7 @@ class FileMan {
 
 
     fun onlineInputStream(context: Context): String{
-        val dirMain = context.getExternalFilesDir(null)?.absolutePath +"/MAIN/"+"data_youtube.json"
+        val dirMain = context.getExternalFilesDir(null)?.absolutePath +"/MAIN/"+"data_modul.json"
         //UpdateMan().setLastUpdateText(tv_tanggal, dirMain)
         val json: String?
         val charset: Charset = Charsets.UTF_8

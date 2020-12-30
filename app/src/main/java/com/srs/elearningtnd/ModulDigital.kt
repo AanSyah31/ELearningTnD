@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import com.srs.elearningtnd.Utilities.Loading
+import com.srs.elearningtnd.Utilities.LoadingModul
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_modul_digital.*
 import kotlinx.android.synthetic.main.list_menu.view.*
@@ -51,38 +52,63 @@ class ModulDigital : AppCompatActivity() {
             }
         }
 
-        tentangKamiModul.setOnClickListener {
-            val intent = Intent(this@ModulDigital, TentangKami::class.java)
-            startActivity(intent)
-        }
-
-        cvSoftSkill.cardMenu.setOnClickListener {
+        cvSoftSkill.iv_youtube.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
             intent.putExtra("ViewType", softskill)
             startActivity(intent)
         }
-        cvEstate.cardMenu.setOnClickListener {
+        cvSoftSkill.iv_modul.setOnClickListener {
+            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
+            intent.putExtra("ViewType", softskill)
+            startActivity(intent)
+        }
+        cvEstate.iv_youtube.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
             intent.putExtra("ViewType", estate)
             startActivity(intent)
         }
-        cvAdmin.cardMenu.setOnClickListener {
+        cvEstate.iv_modul.setOnClickListener {
+            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
+            intent.putExtra("ViewType", estate)
+            startActivity(intent)
+        }
+        cvAdmin.iv_youtube.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
             intent.putExtra("ViewType", admin)
             startActivity(intent)
         }
-        cvMill.cardMenu.setOnClickListener {
+        cvAdmin.iv_modul.setOnClickListener {
+            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
+            intent.putExtra("ViewType", admin)
+            startActivity(intent)
+        }
+        cvMill.iv_youtube.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
             intent.putExtra("ViewType", mill)
             startActivity(intent)
         }
-        cvTraksi.cardMenu.setOnClickListener {
+        cvMill.iv_modul.setOnClickListener {
+            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
+            intent.putExtra("ViewType", mill)
+            startActivity(intent)
+        }
+        cvTraksi.iv_youtube.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
             intent.putExtra("ViewType", traksi)
             startActivity(intent)
         }
-        cvSupporting.cardMenu.setOnClickListener {
+        cvTraksi.iv_modul.setOnClickListener {
+            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
+            intent.putExtra("ViewType", traksi)
+            startActivity(intent)
+        }
+        cvSupporting.iv_youtube.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
+            intent.putExtra("ViewType", supporting)
+            startActivity(intent)
+        }
+        cvSupporting.iv_modul.setOnClickListener {
+            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
             intent.putExtra("ViewType", supporting)
             startActivity(intent)
         }

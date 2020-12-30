@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="250dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         android:id="@+id/cardMenu"
-        app:cardBackgroundColor="@color/white"
         android:layout_gravity="center"
-        android:background="@color/white"
-        app:strokeWidth="1.5dp">
+        app:strokeWidth="1.5dp"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -24,16 +23,19 @@
             android:orientation="horizontal"
             android:layout_margin="15dp"
             android:gravity="center"
-            android:id="@+id/btMenu">
+            android:id="@+id/btMenu"
+            android:weightSum="7">
 
             <ImageView
-                android:layout_width="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="30dp"
                 android:src="@drawable/rsz_soft_skill"
                 android:id="@+id/iconListMenu"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="4"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="Soft"
@@ -43,7 +45,23 @@
                 android:textAlignment="center"
                 android:id="@+id/tvListMenu"/>
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_youtube"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_youtube"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"/>
 
+            <ImageView
+                android:id="@+id/iv_modul"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_book"/>
+
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

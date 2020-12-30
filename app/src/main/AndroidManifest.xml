@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".Splash"
             android:screenOrientation="sensorPortrait"
@@ -37,19 +38,34 @@
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".TentangKami"
+            android:screenOrientation="portrait"
+            android:theme="@style/materialWhiteBar" />
+        <activity
+            android:name=".InfoAplikasi"
             android:screenOrientation="fullSensor"
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".ListVideo"
             android:screenOrientation="portrait"
-            android:theme="@style/materialWhiteBar"/>
+            android:theme="@style/materialWhiteBar" />
+        <activity
+            android:name=".ListModul"
+            android:screenOrientation="portrait"
+            android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".Utilities.Loading"
             android:theme="@style/materialWhiteBar" />
         <activity
+            android:name=".Utilities.LoadingModul"
+            android:theme="@style/materialWhiteBar" />
+        <activity
             android:name=".VideoYT"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/FullScreen"/>
+            android:theme="@style/FullScreen" />
+        <activity
+            android:name=".ViewPDF"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/FullScreen" />
     </application>
 
 </manifest>

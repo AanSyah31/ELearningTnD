@@ -15,7 +15,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 
-class ListViewAdapter(
+class ListViewAdapterModul(
     private val context: Activity,
     private val id: Array<Int>,
     private val judul: Array<String>,
@@ -24,32 +24,27 @@ class ListViewAdapter(
 )
     : ArrayAdapter<String>(
     context,
-    R.layout.row,
+    R.layout.row_modul,
     judul
 ) {
 
     @SuppressLint("SetTextI18n", "ViewHolder")
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
-        val rowView = inflater.inflate(R.layout.row, null, true)
-        val card = rowView.findViewById(R.id.bt_full) as ImageView
-        val tvJudul = rowView.findViewById(R.id.tv_judulYoutube) as TextView
-        val tvTag = rowView.findViewById(R.id.tv_tagYoutube) as TextView
-        val yt = rowView.findViewById(R.id.id_youtube) as YouTubePlayerView
-        card.setOnClickListener {
-            val intent = Intent(context, VideoYT::class.java)
-            intent.putExtra("video", link[position])
+        val rowView = inflater.inflate(R.layout.row_modul, null, true)
+        /*val icon = rowView.findViewById(R.id.iv_Icon) as ImageView*/
+        val tvJudul = rowView.findViewById(R.id.tv_Title) as TextView
+        val tvTag = rowView.findViewById(R.id.tv_Category) as TextView
+        val id = rowView.findViewById(R.id.id_modul) as LinearLayout
+        id.setOnClickListener {
+            val intent = Intent(context, ViewPDF::class.java)
+            intent.putExtra("link", link[position])
             context.startActivity(intent)
         }
 
         tvJudul.text = judul[position]
         tvTag.text = tag[position]
-        yt.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
-            override fun onReady(youTubePlayer: YouTubePlayer) {
-                val video = link[position]
-                youTubePlayer.cueVideo(video, 0f) }
-        })
-        yt.isEnabled = false
+
         return rowView
     }
 

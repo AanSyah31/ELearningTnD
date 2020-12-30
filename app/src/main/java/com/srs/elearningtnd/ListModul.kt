@@ -19,15 +19,15 @@ import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ListVideo : AppCompatActivity() {
+class ListModul : AppCompatActivity() {
 
     var i = 0
-    private var arrayList = ArrayList<ModelList>()
-    private var arrayListFilter = ArrayList<ModelList>()
+    private var arrayList = ArrayList<ModelListModul>()
+    private var arrayListFilter = ArrayList<ModelListModul>()
     private var judul = ArrayList<String>()
     private var tag = ArrayList<String>()
     var id = ArrayList<Int>()
-    var videoId = ArrayList<String>()
+    var namaFile = ArrayList<String>()
     lateinit var userDetail: JSONObject
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -102,22 +102,17 @@ class ListVideo : AppCompatActivity() {
         }
 
         bt_back.setOnClickListener {
-            val intent = Intent(this@ListVideo, ModulDigital::class.java)
+            val intent = Intent(this@ListModul, ModulDigital::class.java)
             startActivity(intent)
         }
     }
 
     private fun makeList(search: String){
-        /*var searchList = try {
-            search.split(" ").toTypedArray()
-        }catch (e: Exception){
-
-        }*/
         val s = search.toLowerCase(Locale.getDefault())
         arrayListFilter = arrayList
         val arrayJudul = ArrayList<String>()
         val arrayTag = ArrayList<String>()
-        val arrayVideoId = ArrayList<String>()
+        val arrayNamaFile = ArrayList<String>()
         val arrayId = ArrayList<Int>()
         Log.d("search","isi filter ${arrayList.toTypedArray().contentToString()}")
 
@@ -125,22 +120,22 @@ class ListVideo : AppCompatActivity() {
             if (search == ""){
                 arrayJudul.add(e.judul)
                 arrayTag.add(e.tag)
-                arrayVideoId.add(e.videoId)
+                arrayNamaFile.add(e.namaFile)
                 arrayId.add(e.id)
             } else if (search != "" && e.judul.toLowerCase(Locale.getDefault()).contains(s) || e.tag.toLowerCase(Locale.getDefault()).contains(s)){
                 arrayJudul.add(e.judul)
                 arrayTag.add(e.tag)
-                arrayVideoId.add(e.videoId)
+                arrayNamaFile.add(e.namaFile)
                 arrayId.add(e.id)
             }
         }
         //creating custom ArrayAdapter
-        val myListAdapter = ListViewAdapter(
+        val myListAdapter = ListViewAdapterModul(
             this,
             arrayId.toTypedArray(),
             arrayJudul.toTypedArray(),
             arrayTag.toTypedArray(),
-            arrayVideoId.toTypedArray()
+            arrayNamaFile.toTypedArray()
         )
         listView?.adapter = myListAdapter
     }
@@ -148,7 +143,6 @@ class ListVideo : AppCompatActivity() {
     private fun online(){
         when (intent.getStringExtra("ViewType")!!) {
             "Soft Skill" -> {
-                Log.d("debugList", "soft_skill")
                 parseJSONdata("Soft Skill")
             }
             "Estate" -> {
@@ -204,7 +198,7 @@ class ListVideo : AppCompatActivity() {
     }
 
     private fun parseJSONdata(string: String) {
-        Log.d("yt","list $string")
+        Log.d("modul","list $string")
         // since we have JSON object, so we are getting the object
         //here we are calling a function and that function is returning the JSON object
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val obj: JSONObject = try {
@@ -213,8 +207,19 @@ class ListVideo : AppCompatActivity() {
             JSONObject(FileMan().offlineInputStream(this))
         }
         // fetch JSONArray named users by using getJSONArray
-        val userArray = obj.getJSONArray("db_media")
-        Log.d("yt","userArray: $userArray")
+        val userArray = obj.getJSONArray("db_modul")
+        //Log.d("yt","userArray: $userArray")
+        val m = try {
+            var arrayListStr = ArrayList<String>()
+            val string = userDetail.getString("db_modul")
+            val jSONArray = JSONArray(string)
+            for (i in 0 until jSONArray.length()){
+                arrayListStr.add(jSONArray.getJSONObject(i).getString("db_pdf"))
+            }
+            arrayListStr.toTypedArray().contentToString()
+        } catch (e: Exception) {
+            "0"
+        }
         // implement for loop for getting users data i.e. name, email and contact
         for (i in 0 until userArray.length()) {
             // create a JSONObject for fetching single user data
@@ -224,12 +229,12 @@ class ListVideo : AppCompatActivity() {
             } catch (e: Exception) {
                 "0"
             }
-            Log.d("yt", "list s $s")
+            //Log.d("yt", "list s $s")
             if (s == string){
                 et_list.isEnabled = false
                 isiArray()
             } else if (string == "semua"){
-                Log.d("yt", "list else semua")
+                //Log.d("yt", "list else semua")
                 isiArray()
             }
         }
@@ -249,7 +254,7 @@ class ListVideo : AppCompatActivity() {
         Log.d("debugList", "id: $id")
         Log.d("debugList", "judul: $judul")
         Log.d("debugList", "tag: $tag")
-        Log.d("debugList", "videoId: $videoId")
+        Log.d("debugList", "videoId: $namaFile")
     }
 
     private fun isiArray(){
@@ -258,7 +263,7 @@ class ListVideo : AppCompatActivity() {
         } catch (e: Exception) {
             "0"
         }
-        Log.d("yt", "list j $j")
+        //Log.d("yt", "list j $j")
         judul.add(j)
         val t = try {
             var arrayListStr = ArrayList<String>()
@@ -283,18 +288,14 @@ class ListVideo : AppCompatActivity() {
         } catch (e: Exception) {
             "0"
         }
-        videoId.add(v)
-        Log.d("debugList", "judul=$j || tag=$t || id=$d || video=$v")
+        namaFile.add(v)
+        Log.d("debugList", "judul=$j || tag=$t || id=$d || namaFile=$v")
 
         Log.d("debugList", "id: $d")
         Log.d("debugList", "judul: $j")
         Log.d("debugList", "tag: $t")
-        Log.d("debugList", "videoId: $v")
+        Log.d("debugList", "namaFile: $v")
 
-        //bind all strings in an array
-        arrayList.add(ModelList(d, j, t, v))
-
-        //arrayList.filter { a -> !a.toString().contains("how") }
-        //arrayList.removeIf { a -> !a.toString().contains("how") }
+        arrayList.add(ModelListModul(d, j, t, v))
     }
 }
