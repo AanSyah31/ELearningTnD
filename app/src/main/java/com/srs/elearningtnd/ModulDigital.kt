@@ -2,28 +2,33 @@ package com.srs.elearningtnd
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import com.srs.elearningtnd.Utilities.Loading
-import com.srs.elearningtnd.Utilities.LoadingModul
+import androidx.appcompat.app.AppCompatActivity
+import com.srs.elearningtnd.utilities.Loading
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_modul_digital.*
 import kotlinx.android.synthetic.main.list_menu.view.*
 
 class ModulDigital : AppCompatActivity() {
+
+    private val softskill = "Soft Skill"
+    private val estate = "Estate"
+    private val admin = "Admin"
+    private val mill = "Mill"
+    private val traksi = "Traksi"
+    private val supporting = "Supporting"
+
+    private val vid = "video"
+    private val pdf = "pdf"
+
+    @Suppress("DEPRECATION")
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_modul_digital)
-
-        val softskill = "Soft Skill"
-        val estate = "Estate"
-        val admin = "Admin"
-        val mill = "Mill"
-        val traksi = "Traksi"
-        val supporting = "Supporting"
 
         cvSoftSkill.tvListMenu.text = softskill
         cvEstate.tvListMenu.text = estate
@@ -51,74 +56,38 @@ class ModulDigital : AppCompatActivity() {
                 false
             }
         }
+        btOnClickMenu(cvSoftSkill, softskill)
+        btOnClickMenu(cvEstate, estate)
+        btOnClickMenu(cvAdmin, admin)
+        btOnClickMenu(cvMill, mill)
+        btOnClickMenu(cvTraksi, traksi)
+        btOnClickMenu(cvSupporting, supporting)
+    }
 
-        cvSoftSkill.iv_youtube.setOnClickListener {
+    private fun btOnClickMenu(view: View, kategori: String) {
+        view.iv_youtube.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
-            intent.putExtra("ViewType", softskill)
+            Log.d("testloading", "click menu: video")
+            Log.d("testloading", "click menu kat: $kategori")
+            intent.putExtra("kategori", kategori)
+            intent.putExtra("media", vid)
             startActivity(intent)
         }
-        cvSoftSkill.iv_modul.setOnClickListener {
-            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
-            intent.putExtra("ViewType", softskill)
-            startActivity(intent)
-        }
-        cvEstate.iv_youtube.setOnClickListener {
+        view.iv_pdf.setOnClickListener {
             val intent = Intent(this@ModulDigital, Loading::class.java)
-            intent.putExtra("ViewType", estate)
-            startActivity(intent)
-        }
-        cvEstate.iv_modul.setOnClickListener {
-            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
-            intent.putExtra("ViewType", estate)
-            startActivity(intent)
-        }
-        cvAdmin.iv_youtube.setOnClickListener {
-            val intent = Intent(this@ModulDigital, Loading::class.java)
-            intent.putExtra("ViewType", admin)
-            startActivity(intent)
-        }
-        cvAdmin.iv_modul.setOnClickListener {
-            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
-            intent.putExtra("ViewType", admin)
-            startActivity(intent)
-        }
-        cvMill.iv_youtube.setOnClickListener {
-            val intent = Intent(this@ModulDigital, Loading::class.java)
-            intent.putExtra("ViewType", mill)
-            startActivity(intent)
-        }
-        cvMill.iv_modul.setOnClickListener {
-            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
-            intent.putExtra("ViewType", mill)
-            startActivity(intent)
-        }
-        cvTraksi.iv_youtube.setOnClickListener {
-            val intent = Intent(this@ModulDigital, Loading::class.java)
-            intent.putExtra("ViewType", traksi)
-            startActivity(intent)
-        }
-        cvTraksi.iv_modul.setOnClickListener {
-            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
-            intent.putExtra("ViewType", traksi)
-            startActivity(intent)
-        }
-        cvSupporting.iv_youtube.setOnClickListener {
-            val intent = Intent(this@ModulDigital, Loading::class.java)
-            intent.putExtra("ViewType", supporting)
-            startActivity(intent)
-        }
-        cvSupporting.iv_modul.setOnClickListener {
-            val intent = Intent(this@ModulDigital, LoadingModul::class.java)
-            intent.putExtra("ViewType", supporting)
+            Log.d("testloading", "click menu: pdf")
+            Log.d("testloading", "click menu kat: $kategori")
+            intent.putExtra("kategori", kategori)
+            intent.putExtra("media", pdf)
             startActivity(intent)
         }
     }
 
-    fun searchModul(){
+    private fun searchModul() {
         val searchStr = etModulSearch.text.toString()
-        if (searchStr.replace(" ","").isNotEmpty()){
+        if (searchStr.replace(" ", "").isNotEmpty()) {
             val intent = Intent(this@ModulDigital, Loading::class.java)
-            intent.putExtra("ViewType", searchStr)
+            intent.putExtra("search", searchStr)
             startActivity(intent)
         } else {
             Toasty.info(this, "Mohon isi kolom search sebelum melakukan pencarian").show()

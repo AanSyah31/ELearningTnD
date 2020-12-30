@@ -10,8 +10,8 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.srs.elearningtnd.Utilities.AlertDialogUtility
-import com.srs.elearningtnd.Utilities.FileMan
+import com.srs.elearningtnd.utilities.AlertDialogUtility
+import com.srs.elearningtnd.utilities.FileMan
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_listview.*
 import org.json.JSONArray
@@ -43,7 +43,7 @@ class ListVideo : AppCompatActivity() {
         lottieList.playAnimation()
 
         val network = intent.getStringExtra("network")
-        val vt = intent.getStringExtra("ViewType")
+        val vt = intent.getStringExtra("kategori")
         et_list.setText(vt)
         FileMan().deleteFiles("CACHE", this)
         Log.d("yt", "list masuk list")
@@ -146,7 +146,7 @@ class ListVideo : AppCompatActivity() {
     }
 
     private fun online(){
-        when (intent.getStringExtra("ViewType")!!) {
+        when (intent.getStringExtra("kategori")!!) {
             "Soft Skill" -> {
                 Log.d("debugList", "soft_skill")
                 parseJSONdata("Soft Skill")
@@ -173,7 +173,7 @@ class ListVideo : AppCompatActivity() {
     }
 
     private fun offline(){
-        when (intent.getStringExtra("ViewType")) {
+        when (intent.getStringExtra("kategori")) {
             "Soft Skill" -> {
                 parseJSONdata("Soft Skill")
             }
@@ -212,24 +212,29 @@ class ListVideo : AppCompatActivity() {
         }catch (e:Exception){
             JSONObject(FileMan().offlineInputStream(this))
         }
+        Log.d("yt","json object list video: $obj")
         // fetch JSONArray named users by using getJSONArray
-        val userArray = obj.getJSONArray("db_media")
+        val userArray = obj.getJSONArray("db_modul")
         Log.d("yt","userArray: $userArray")
         // implement for loop for getting users data i.e. name, email and contact
         for (i in 0 until userArray.length()) {
             // create a JSONObject for fetching single user data
             userDetail = userArray.getJSONObject(i)
-            val s = try {
+            val kategori = try {
                 userDetail.getString("kategori")
             } catch (e: Exception) {
                 "0"
             }
-            Log.d("yt", "list s $s")
-            if (s == string){
+            val media = try {
+                userDetail.getString("db_media")
+            } catch (e: Exception) {
+                "0"
+            }
+            if (kategori == string && media == "video"){
                 et_list.isEnabled = false
                 isiArray()
             } else if (string == "semua"){
-                Log.d("yt", "list else semua")
+                //Log.d("yt", "list else semua")
                 isiArray()
             }
         }
@@ -237,7 +242,7 @@ class ListVideo : AppCompatActivity() {
             @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val thread = Thread {
                 runOnUiThread{
                     if (string == "semua"){
-                        makeList(intent.getStringExtra("ViewType"))
+                        makeList(intent.getStringExtra("kategori"))
                     }else{
                         search_vid.visibility = View.GONE
                         makeList("")

@@ -1,14 +1,12 @@
 @file:Suppress("DEPRECATION")
 
-package com.srs.elearningtnd.Utilities
+package com.srs.elearningtnd.utilities
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Response
@@ -20,9 +18,7 @@ import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
 import com.srs.elearningtnd.*
 import kotlinx.android.synthetic.main.activity_loading.*
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.loader_layout.*
-import kotlinx.android.synthetic.main.loader_layout.tv_hint_loading
 import kotlinx.android.synthetic.main.loader_layout.view.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -31,7 +27,7 @@ import java.util.*
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "DEPRECATION")
-class Loading : AppCompatActivity() {
+class LoadingModul : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +41,7 @@ class Loading : AppCompatActivity() {
         @Suppress("UNUSED_ANONYMOUS_PARAMETER") val strReq: StringRequest =
             object : StringRequest(
                 Method.POST,
-                "https://palmsentry.srs-ssms.com/test_md5.php",
+                "https://palmsentry.srs-ssms.com/test_modul_md5.php",
                 Response.Listener { response ->
                     try {
                         val jObj = JSONObject(response)
@@ -139,7 +135,7 @@ class Loading : AppCompatActivity() {
                     @RequiresApi(Build.VERSION_CODES.O)
                     override fun onDownloadComplete() {
                         Log.d("yt","loading dl komplit")
-                        val intent = Intent(this@Loading, ListVideo::class.java)
+                        val intent = Intent(this@LoadingModul, ListPdf::class.java)
                         intent.putExtra("ViewType", viewType)
                         intent.putExtra("network", "Online")
                         startActivity(intent)
@@ -151,8 +147,8 @@ class Loading : AppCompatActivity() {
                     }
                 })
         } else if (f.exists()) {
-            Log.d("yt","loading ke list video")
-            val intent = Intent(this@Loading, ListVideo::class.java)
+            //Log.d("yt","loading ke list video")
+            val intent = Intent(this@LoadingModul, ListPdf::class.java)
             intent.putExtra("ViewType", viewType)
             intent.putExtra("network", "Online")
             startActivity(intent)
@@ -165,7 +161,7 @@ class Loading : AppCompatActivity() {
     }
 
     fun offlineLoading() {
-        val intent = Intent(this@Loading, ListVideo::class.java)
+        val intent = Intent(this@LoadingModul, ListPdf::class.java)
         val viewType = intent.getStringExtra("ViewType")
         intent.putExtra("ViewType", viewType)
         intent.putExtra("network", "Offline")

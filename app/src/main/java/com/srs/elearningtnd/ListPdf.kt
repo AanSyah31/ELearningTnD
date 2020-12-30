@@ -10,8 +10,8 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.srs.elearningtnd.Utilities.AlertDialogUtility
-import com.srs.elearningtnd.Utilities.FileMan
+import com.srs.elearningtnd.utilities.AlertDialogUtility
+import com.srs.elearningtnd.utilities.FileMan
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_listview.*
 import org.json.JSONArray
@@ -19,7 +19,7 @@ import org.json.JSONObject
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ListModul : AppCompatActivity() {
+class ListPdf : AppCompatActivity() {
 
     var i = 0
     private var arrayList = ArrayList<ModelListModul>()
@@ -27,7 +27,7 @@ class ListModul : AppCompatActivity() {
     private var judul = ArrayList<String>()
     private var tag = ArrayList<String>()
     var id = ArrayList<Int>()
-    var namaFile = ArrayList<String>()
+    private var namaFile = ArrayList<String>()
     lateinit var userDetail: JSONObject
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,8 +43,10 @@ class ListModul : AppCompatActivity() {
         lottieList.playAnimation()
 
         val network = intent.getStringExtra("network")
-        val vt = intent.getStringExtra("ViewType")
-        et_list.setText(vt)
+        val kategori = intent.getStringExtra("kategori")
+        Log.d("testloading", "list pdf net: $network")
+        Log.d("testloading", "list pdf kat: $kategori")
+        et_list.setText(kategori)
         FileMan().deleteFiles("CACHE", this)
         Log.d("yt", "list masuk list")
         Log.d("yt", "list $network")
@@ -102,7 +104,7 @@ class ListModul : AppCompatActivity() {
         }
 
         bt_back.setOnClickListener {
-            val intent = Intent(this@ListModul, ModulDigital::class.java)
+            val intent = Intent(this@ListPdf, ModulDigital::class.java)
             startActivity(intent)
         }
     }
@@ -141,7 +143,7 @@ class ListModul : AppCompatActivity() {
     }
 
     private fun online(){
-        when (intent.getStringExtra("ViewType")!!) {
+        when (intent.getStringExtra("kategori")!!) {
             "Soft Skill" -> {
                 parseJSONdata("Soft Skill")
             }
@@ -167,7 +169,7 @@ class ListModul : AppCompatActivity() {
     }
 
     private fun offline(){
-        when (intent.getStringExtra("ViewType")) {
+        when (intent.getStringExtra("kategori")) {
             "Soft Skill" -> {
                 parseJSONdata("Soft Skill")
             }
@@ -209,28 +211,22 @@ class ListModul : AppCompatActivity() {
         // fetch JSONArray named users by using getJSONArray
         val userArray = obj.getJSONArray("db_modul")
         //Log.d("yt","userArray: $userArray")
-        val m = try {
-            var arrayListStr = ArrayList<String>()
-            val string = userDetail.getString("db_modul")
-            val jSONArray = JSONArray(string)
-            for (i in 0 until jSONArray.length()){
-                arrayListStr.add(jSONArray.getJSONObject(i).getString("db_pdf"))
-            }
-            arrayListStr.toTypedArray().contentToString()
-        } catch (e: Exception) {
-            "0"
-        }
         // implement for loop for getting users data i.e. name, email and contact
         for (i in 0 until userArray.length()) {
             // create a JSONObject for fetching single user data
             userDetail = userArray.getJSONObject(i)
-            val s = try {
+            val kategori = try {
                 userDetail.getString("kategori")
             } catch (e: Exception) {
                 "0"
             }
+            val media = try {
+                userDetail.getString("db_media")
+            } catch (e: Exception) {
+                "0"
+            }
             //Log.d("yt", "list s $s")
-            if (s == string){
+            if (kategori == string && media == "pdf"){
                 et_list.isEnabled = false
                 isiArray()
             } else if (string == "semua"){
@@ -242,7 +238,7 @@ class ListModul : AppCompatActivity() {
             @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val thread = Thread {
                 runOnUiThread{
                     if (string == "semua"){
-                        makeList(intent.getStringExtra("ViewType"))
+                        makeList(intent.getStringExtra("kategori"))
                     }else{
                         search_vid.visibility = View.GONE
                         makeList("")

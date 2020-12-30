@@ -49,14 +49,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/materialWhiteBar" />
         <activity
-            android:name=".ListModul"
+            android:name=".ListPdf"
             android:screenOrientation="portrait"
             android:theme="@style/materialWhiteBar" />
         <activity
-            android:name=".Utilities.Loading"
+            android:name=".utilities.Loading"
             android:theme="@style/materialWhiteBar" />
         <activity
-            android:name=".Utilities.LoadingModul"
+            android:name=".utilities.LoadingModul"
             android:theme="@style/materialWhiteBar" />
         <activity
             android:name=".VideoYT"

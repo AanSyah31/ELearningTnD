@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.srs.elearningtnd.Utilities
+package com.srs.elearningtnd.utilities
 
 import android.annotation.SuppressLint
 import android.content.Context

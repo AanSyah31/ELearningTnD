@@ -1,6 +1,6 @@
 @file:Suppress("SpellCheckingInspection")
 
-package com.srs.elearningtnd.Utilities
+package com.srs.elearningtnd.utilities
 
 @Suppress("unused")
 object Database {

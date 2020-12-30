@@ -9,9 +9,8 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.BaseMultiplePermissionsListener
-import com.srs.elearningtnd.Utilities.AlertDialogUtility
+import com.srs.elearningtnd.utilities.AlertDialogUtility
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_modul_digital.*
 
 class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
