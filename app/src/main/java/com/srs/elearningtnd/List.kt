@@ -32,13 +32,13 @@ class List : AppCompatActivity() {
     private var linkList = ArrayList<String>()
     private var mediaList = ArrayList<String>()
     private var thumbnailList = ArrayList<String>()
-    private var kategoriList = ArrayList<Int>()
 
     private lateinit var userDetail: JSONObject
 
     private var mediaIntent = ""
     private var kategoriIntent = ""
     private var networkIntent = ""
+    private var searchIntent = ""
 
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,10 +54,27 @@ class List : AppCompatActivity() {
         lottieList.playAnimation()
 
         networkIntent = intent.getStringExtra("network")
-        kategoriIntent = intent.getStringExtra("kategori")
-        mediaIntent = intent.getStringExtra("media")
+        kategoriIntent = try {
+            intent.getStringExtra("kategori")
+        } catch (e: Exception){
+            ""
+        }
+        searchIntent = try {
+            intent.getStringExtra("search")
+        } catch (e: Exception){
+            ""
+        }
+        mediaIntent = try {
+            intent.getStringExtra("media")
+        } catch (e: Exception) {
+            ""
+        }
         Log.d("network","Intent test $networkIntent")
-        et_list.setText(kategoriIntent)
+        if (searchIntent == ""){
+            et_list.setText(kategoriIntent)
+        } else {
+            et_list.setText(searchIntent)
+        }
         FileMan().deleteFiles("CACHE", this)
         Log.d("yt", "list masuk list")
         Log.d("yt", "list $networkIntent")
@@ -121,11 +138,6 @@ class List : AppCompatActivity() {
     }
 
     private fun makeList(search: String){
-        /*var searchList = try {
-            search.split(" ").toTypedArray()
-        }catch (e: Exception){
-
-        }*/
         val s = search.toLowerCase(Locale.getDefault())
         arrayListFilter = arrayList
         val arrayJudul = ArrayList<String>()
@@ -138,7 +150,7 @@ class List : AppCompatActivity() {
 
         Log.d("search", "isi filter ${arrayList.toTypedArray().contentToString()}")
 
-        for ((index, e) in arrayListFilter.withIndex()) {
+        for (e in arrayListFilter) {
             if (search == "") {
                 arrayJudul.add(e.judul)
                 arrayTag.add(e.tag)
@@ -270,8 +282,10 @@ class List : AppCompatActivity() {
             @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS") val thread = Thread {
                 runOnUiThread{
                     if (string == "semua") {
-                        makeList(intent.getStringExtra("kategori"))
+                        Log.d("searchtest","search intent=$searchIntent")
+                        makeList(searchIntent)
                     } else {
+                        Log.d("searchtest","search intent= kosong")
                         search_vid.visibility = View.GONE
                         makeList("")
                     }
@@ -295,7 +309,7 @@ class List : AppCompatActivity() {
         judulList.add(judul)
 
         val tag = try {
-            var arrayListStr = ArrayList<String>()
+            val arrayListStr = ArrayList<String>()
             val string = userDetail.getString("db_tag")
             val jSONArray = JSONArray(string)
             for (i in 0 until jSONArray.length()){
@@ -335,12 +349,6 @@ class List : AppCompatActivity() {
         mediaList.add(thumbnail)
 
         Log.d("debugList", "judul=$judul || tag=$tag || id=$id || video=$link")
-
-        Log.d("debugList", "id: $id")
-        Log.d("debugList", "judul: $judul")
-        Log.d("debugList", "tag: $tag")
-        Log.d("debugList", "videoId: $link")
-
         //bind all strings in an array
         arrayList.add(ModelList(id, link, thumbnail, judul, tag, media))
 
