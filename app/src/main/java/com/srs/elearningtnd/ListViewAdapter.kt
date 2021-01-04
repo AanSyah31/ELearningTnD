@@ -32,11 +32,11 @@ class ListViewAdapter(
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
         val rowView = inflater.inflate(R.layout.row, null, true)
-        val card = rowView.findViewById(R.id.bt_full) as ImageView
-        val tvJudul = rowView.findViewById(R.id.tv_judulYoutube) as TextView
-        val tvTag = rowView.findViewById(R.id.tv_tagYoutube) as TextView
-        val yt = rowView.findViewById(R.id.id_youtube) as YouTubePlayerView
-        card.setOnClickListener {
+        val image = rowView.findViewById(R.id.iv_modul) as ImageView
+        val tvJudul = rowView.findViewById(R.id.tv_judulModul) as TextView
+        val tvTag = rowView.findViewById(R.id.tv_tagModul) as TextView
+        //val yt = rowView.findViewById(R.id.id_youtube) as YouTubePlayerView
+        image.setOnClickListener {
             val intent = Intent(context, VideoYT::class.java)
             intent.putExtra("video", link[position])
             context.startActivity(intent)
@@ -44,12 +44,12 @@ class ListViewAdapter(
 
         tvJudul.text = judul[position]
         tvTag.text = tag[position]
-        yt.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+        /*yt.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 val video = link[position]
                 youTubePlayer.cueVideo(video, 0f) }
         })
-        yt.isEnabled = false
+        yt.isEnabled = false*/
         return rowView
     }
 

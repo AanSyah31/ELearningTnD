@@ -24,19 +24,19 @@ class ListViewAdapterModul(
 )
     : ArrayAdapter<String>(
     context,
-    R.layout.row_modul,
+    R.layout.row,
     judul
 ) {
 
     @SuppressLint("SetTextI18n", "ViewHolder")
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
-        val rowView = inflater.inflate(R.layout.row_modul, null, true)
-        /*val icon = rowView.findViewById(R.id.iv_Icon) as ImageView*/
-        val tvJudul = rowView.findViewById(R.id.tv_Title) as TextView
-        val tvTag = rowView.findViewById(R.id.tv_Category) as TextView
-        val id = rowView.findViewById(R.id.id_modul) as LinearLayout
-        id.setOnClickListener {
+        val rowView = inflater.inflate(R.layout.row, null, true)
+        val image = rowView.findViewById(R.id.iv_modul) as ImageView
+        val tvJudul = rowView.findViewById(R.id.tv_judulModul) as TextView
+        val tvTag = rowView.findViewById(R.id.tv_tagModul) as TextView
+
+        image.setOnClickListener {
             val intent = Intent(context, ViewPDF::class.java)
             intent.putExtra("link", link[position])
             context.startActivity(intent)

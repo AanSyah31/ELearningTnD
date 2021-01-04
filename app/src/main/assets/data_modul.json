@@ -4,6 +4,7 @@
       "id": "1",
       "db_media": "video",
       "link": "-Sh4HVxb65c",
+      "thumbnail": "thumbnail_chipping_pohon",
       "judul": "Chipping Pohon Kelapa Sawit",
       "kategori": "Estate",
       "db_tag": [
@@ -22,6 +23,7 @@
       "id": "2",
       "db_media": "video",
       "link": "ZAyV8hsiMuw",
+      "thumbnail": "thumbnail_sensus_updks",
       "judul": "Sensus UPDKS",
       "kategori": "Estate",
       "db_tag": [
@@ -37,6 +39,7 @@
       "id": "3",
       "db_media": "video",
       "link": "2Bd_BrDZFIU",
+      "thumbnail": "thumbnail_deteksi_hama",
       "judul": "Deteksi Hama Kelapa Sawit",
       "kategori": "Estate",
       "db_tag": [
@@ -55,6 +58,7 @@
       "id": "4",
       "db_media": "video",
       "link": "6VTAUWQShq0",
+      "thumbnail": "",
       "judul": "PMMP Mutu Buah",
       "kategori": "Estate",
       "db_tag": [
@@ -70,6 +74,7 @@
       "id": "5",
       "db_media": "video",
       "link": "J_Rn9uAErvU",
+      "thumbnail": "",
       "judul": "PMMP Mutu Ancak",
       "kategori": "Estate",
       "db_tag": [
@@ -85,6 +90,7 @@
       "id": "6",
       "db_media": "video",
       "link": "uWXxxOrzy9k",
+      "thumbnail": "",
       "judul": "PMMP Sensus AKP",
       "kategori": "Estate",
       "db_tag": [
@@ -100,6 +106,7 @@
       "id": "7",
       "db_media": "video",
       "link": "9dZ7Od0oSsI",
+      "thumbnail": "",
       "judul": "PMMP Kerani Panen",
       "kategori": "Estate",
       "db_tag": [
@@ -115,6 +122,7 @@
       "id": "8",
       "db_media": "pdf",
       "link": "kelistrikan",
+      "thumbnail": "thumbnail_kelistrikan",
       "judul": "Kelistrikan",
       "kategori": "Mill",
       "db_tag": [
@@ -127,6 +135,7 @@
       "id": "9",
       "db_media": "pdf",
       "link": "laboratorium",
+      "thumbnail": "thumbnail_laboratorium",
       "judul": "Laboratorium",
       "kategori": "Mill",
       "db_tag": [
@@ -139,6 +148,7 @@
       "id": "10",
       "db_media": "pdf",
       "link": "maintenance",
+      "thumbnail": "thumbnail_sistem_maintenance",
       "judul": "Maintenance",
       "kategori": "Mill",
       "db_tag": [
@@ -151,6 +161,7 @@
       "id": "11",
       "db_media": "pdf",
       "link": "administrasi_afdeling",
+      "thumbnail": "thumbnail_administrasi_afdeling",
       "judul": "Administrasi Afdeling",
       "kategori": "Admin",
       "db_tag": [
@@ -166,6 +177,7 @@
       "id": "12",
       "db_media": "pdf",
       "link": "administrasi_gudang",
+      "thumbnail": "thumbnail_administrasi_gudang",
       "judul": "Administrasi Gudang",
       "kategori": "Admin",
       "db_tag": [
@@ -181,6 +193,7 @@
       "id": "13",
       "db_media": "pdf",
       "link": "administrasi_perkebunan_kelapa_sawit",
+      "thumbnail": "thumbnail_administrasi_perkebunan_kelapa_sawit",
       "judul": "Administrasi Perkebunan Kelapa Sawit",
       "kategori": "Admin",
       "db_tag": [
@@ -202,6 +215,7 @@
       "id": "14",
       "db_media": "pdf",
       "link": "mds_06_pengantar_swot_fb_rcps_slp",
+      "thumbnail": "thumbnail_pengantar_swot",
       "judul": "Pengantar SWOT FB RCPS SLP",
       "kategori": "Soft Skill",
       "db_tag": [
@@ -226,6 +240,7 @@
       "id": "15",
       "db_media": "pdf",
       "link": "membangun_hubungan_sosial_rev2",
+      "thumbnail": "thumbnail_membangun_hubungan_sosial",
       "judul": "Membangun Hubungan Sosial",
       "kategori": "Soft Skill",
       "db_tag": [
@@ -244,6 +259,7 @@
       "id": "16",
       "db_media": "pdf",
       "link": "mpe001_17_kehidupan_pondok",
+      "thumbnail": "thumbnail_17_kehidupan_pondok",
       "judul": "17 Kehidupan Pondok",
       "kategori": "Soft Skill",
       "db_tag": [

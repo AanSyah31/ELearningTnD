@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="E-Learning"
-                android:textSize="28sp"
+                android:textSize="24sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/helvetica"
                 android:textStyle="bold" />
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Training and Development"
-                android:textSize="26sp"
+                android:textSize="24sp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/helvetica"
                 android:textStyle="bold" />
