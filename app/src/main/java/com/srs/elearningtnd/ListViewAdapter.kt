@@ -43,7 +43,7 @@ class ListViewAdapter(
         val tvJudul = rowView.findViewById(R.id.tv_judulModul) as TextView
         val tvTag = rowView.findViewById(R.id.tv_tagModul) as TextView
 
-        image.maxHeight = image.width / 2
+        //image.maxHeight = image.width / 2
         //Glide.with(context).load("https://palmsentry.srs-ssms.com/thumbnail/${thumbnail[position]}.jpg").into(image)
 
         Glide.with(context)
@@ -52,6 +52,7 @@ class ListViewAdapter(
             .error(R.drawable.ic_baseline_broken_image_24)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .priority(Priority.HIGH)
+            .centerCrop()
             .into(image)
 
         //val yt = rowView.findViewById(R.id.id_youtube) as YouTubePlayerView

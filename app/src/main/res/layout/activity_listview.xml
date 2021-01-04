@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/border_lightgreen1"
     tools:context=".List"
-    android:paddingTop="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:paddingTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +35,7 @@
                 android:fontFamily="@font/helvetica"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="35sp"
+                android:textSize="25sp"
                 android:background="@color/white"
                 android:backgroundTint="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -47,8 +45,8 @@
 
             <ImageView
                 android:id="@+id/bt_back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_weight="0.25"
                 android:src="@drawable/ic_back_24"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -57,8 +55,8 @@
 
             <ImageView
                 android:id="@+id/search_vid"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_weight="0.25"
                 android:src="@drawable/ic_baseline_search_24"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -153,7 +151,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:paddingRight="20dp"
             android:paddingLeft="20dp"/>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
