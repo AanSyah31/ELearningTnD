@@ -9,7 +9,7 @@
     android:paddingTop="10dp"
     android:paddingRight="10dp"
     android:background="@color/border_lightgreen1"
-    tools:context=".ListVideo">
+    tools:context=".List">
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:layout_width="match_parent"

@@ -45,7 +45,7 @@
             android:screenOrientation="fullSensor"
             android:theme="@style/materialWhiteBar" />
         <activity
-            android:name=".ListVideo"
+            android:name=".List"
             android:screenOrientation="portrait"
             android:theme="@style/materialWhiteBar" />
         <activity

@@ -19,6 +19,7 @@ import java.util.zip.ZipInputStream
 class FileMan {
 
     fun offlineInputStream(context: Context): String? {
+        unzipAsset("data_modul.zip", context)
         val d = context.getExternalFilesDir(null)?.absolutePath +"/OFFLINE/"+"data_modul.json"
         val json: String?
         val charset: Charset = Charsets.UTF_8
@@ -36,8 +37,7 @@ class FileMan {
         return json
     }
 
-    fun unzipAsset(f: String, c: Context) {
-        val file = "${f.subSequence(0, f.length - 3)}zip"
+    private fun unzipAsset(f: String, c: Context) {
         val d = c.getExternalFilesDir(null)?.absolutePath +"/OFFLINE/"
         val destDir = File(d)
         if (!destDir.exists()){
@@ -45,7 +45,7 @@ class FileMan {
         }
         val buffer = ByteArray(1024)
         val am: AssetManager = c.assets
-        val zis = ZipInputStream(am.open(file))
+        val zis = ZipInputStream(am.open(f))
         var zipEntry = zis.nextEntry
         while (zipEntry != null) {
             val newFile = newFile(destDir, zipEntry)

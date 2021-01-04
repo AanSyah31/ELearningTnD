@@ -11,6 +11,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.BaseMultiplePermissionsListener
 import com.srs.elearningtnd.utilities.AlertDialogUtility
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.collections.List
 
 class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

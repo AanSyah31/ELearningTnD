@@ -3,7 +3,9 @@ package com.srs.elearningtnd
 class ModelList
     (
     var id: Int,
+    var link: String,
+    var thumbnail: String,
     var judul: String,
     var tag: String,
-    var videoId: String
+    var media: String
 )

@@ -10,7 +10,7 @@ class VideoYT : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_y_t)
-        val vid = intent.getStringExtra("video")
+        val vid = intent.getStringExtra("link")
         yt_full.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
                 youTubePlayer.loadVideo(vid, 0f) }

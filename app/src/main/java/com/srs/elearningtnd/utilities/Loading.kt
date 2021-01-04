@@ -16,7 +16,10 @@ import com.bumptech.glide.Glide
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
-import com.srs.elearningtnd.*
+import com.srs.elearningtnd.List
+import com.srs.elearningtnd.MainMenu
+import com.srs.elearningtnd.ModulDigital
+import com.srs.elearningtnd.R
 import kotlinx.android.synthetic.main.activity_loading.*
 import kotlinx.android.synthetic.main.loader_layout.*
 import kotlinx.android.synthetic.main.loader_layout.view.*
@@ -41,25 +44,26 @@ class Loading : AppCompatActivity() {
         @Suppress("UNUSED_ANONYMOUS_PARAMETER") val strReq: StringRequest =
             object : StringRequest(
                 Method.POST,
-                "https://palmsentry.srs-ssms.com/test_md5.php",
+                "https://palmsentry.srs-ssms.com/md5_elearning.php",
                 Response.Listener { response ->
                     try {
                         val jObj = JSONObject(response)
                         val hex = jObj.getString("hex")
                         val mainCheck = try {
                             UpdateMan().md5Checksum(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_modul.json")
-                        }catch (e:Exception){
+                        } catch (e: Exception) {
                             ""
                         }
                         // Check for error node in json
                         if (hex == mainCheck) {
-                            Log.d("yt","loading sama")
+                            Log.d("yt", "loading sama")
                             loadFile()
                         } else {
-                            Log.d("yt","loading beda")
-                            val fDelete = File(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_modul.json")
+                            Log.d("yt", "loading beda")
+                            val fDelete =
+                                File(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_modul.json")
                             if (fDelete.exists()) {
-                                Log.d("yt","loading deleted")
+                                Log.d("yt", "loading deleted")
                                 fDelete.delete()
                             }
                             loadFile()
@@ -81,8 +85,7 @@ class Loading : AppCompatActivity() {
                         "Terjadi kesalahan koneksi",
                         "network_error.json"
                     ) {
-                    val intent = Intent(this, ModulDigital::class.java)
-                    startActivity(intent)
+                        loadFile()
                     }
                 }) {
                 override fun getParams(): Map<String, String> {
@@ -157,15 +160,11 @@ class Loading : AppCompatActivity() {
         val kategori = intent.getStringExtra("kategori")
         Log.d("testloading", "loading media intent: $media")
         Log.d("testloading", "loading kat intent: $kategori")
-        if (media == "video"){
-            Log.d("testloading", "loading media: video")
-            intent = Intent(this, ListVideo::class.java)
-        } else if (media == "pdf"){
-            Log.d("testloading", "loading media: pdf")
-            intent = Intent(this, ListPdf::class.java)
-        }
+        Log.d("network","Intent test $network")
+        intent = Intent(this, List::class.java)
         intent.putExtra("kategori", kategori)
         intent.putExtra("network", network)
+        intent.putExtra("media", media)
         startActivity(intent)
         overridePendingTransition(0, 0)
     }
