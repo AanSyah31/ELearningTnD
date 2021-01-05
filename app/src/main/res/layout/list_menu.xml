@@ -29,7 +29,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:src="@drawable/rsz_soft_skill"
                 android:id="@+id/iconListMenu"/>
 
@@ -41,7 +41,7 @@
                 android:text="Soft"
                 android:textColor="@color/black"
                 android:fontFamily="@font/segoeui"
-                android:textSize="23dp"
+                android:textSize="20dp"
                 android:textAlignment="center"
                 android:id="@+id/tvListMenu"/>
 
@@ -49,7 +49,7 @@
                 android:id="@+id/iv_youtube"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:src="@drawable/ic_youtube"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"/>
@@ -58,7 +58,7 @@
                 android:id="@+id/iv_pdf"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:src="@drawable/ic_book"/>
 
         </LinearLayout>

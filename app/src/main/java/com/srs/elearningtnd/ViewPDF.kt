@@ -62,7 +62,7 @@ class ViewPDF : AppCompatActivity() {
             .show()
         FileLoader.with(this)
             .load("${http}.pdf")
-            .fromDirectory(directory, FileLoader.DIR_INTERNAL)
+            .fromDirectory(directory, FileLoader.DIR_EXTERNAL_PUBLIC)
             .checkFileintegrity(true)
             .asFile(object : FileRequestListener<File?>() {
                 override fun onLoad(

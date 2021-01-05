@@ -58,7 +58,6 @@ class Login : AppCompatActivity() {
         promptInfo = BiometricPrompt.PromptInfo.Builder() //DIALOG BUILDER FOR BIOMETRIC AUTHENTIFICATION
             .setTitle("Selamat datang " + prefManager.name + "!")
             .setSubtitle("Gunakan sidik jari untuk melanjutkan ke aplikasi")
-            .setDescription("E-LearningTnD")
             .setNegativeButtonText("Gunakan password saja")
             .build()
         val executor = Executors.newSingleThreadExecutor()

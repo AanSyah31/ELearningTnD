@@ -3,20 +3,16 @@ package com.srs.elearningtnd
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import kotlinx.android.synthetic.main.activity_login.*
+import java.io.File
 
 
 class ListViewAdapter(
@@ -43,6 +39,9 @@ class ListViewAdapter(
         val tvJudul = rowView.findViewById(R.id.tv_judulModul) as TextView
         val tvTag = rowView.findViewById(R.id.tv_tagModul) as TextView
 
+        val image_media = rowView.findViewById(R.id.iv_media) as ImageView
+        val image_info = rowView.findViewById(R.id.iv_info) as ImageView
+
         //image.maxHeight = image.width / 2
         //Glide.with(context).load("https://palmsentry.srs-ssms.com/thumbnail/${thumbnail[position]}.jpg").into(image)
 
@@ -56,21 +55,50 @@ class ListViewAdapter(
             .into(image)
 
         //val yt = rowView.findViewById(R.id.id_youtube) as YouTubePlayerView
-        image.setOnClickListener {
-            when (media[position]) {
-                "video" -> {
+
+
+        when (media[position]) {
+            "video" -> {
+                image.setOnClickListener {
                     val intent = Intent(context, VideoYT::class.java)
                     intent.putExtra("link", link[position])
                     context.startActivity(intent)
                 }
-                "pdf" -> {
-                    val intent = Intent(context, ViewPDF::class.java)
-                    intent.putExtra("link", link[position])
-                    context.startActivity(intent)
+                image_media.visibility = View.VISIBLE
+                Glide.with(context)
+                    .load(R.drawable.ic_video)
+                    .into(image_media)
+            }
+            "pdf" -> {
+                image.setOnClickListener {
+                val intent = Intent(context, ViewPDF::class.java)
+                intent.putExtra("link", link[position])
+                context.startActivity(intent)
                 }
-                else -> {
+                image_media.visibility = View.VISIBLE
+                Glide.with(context)
+                    .load(R.drawable.ic_pdf)
+                    .into(image_media)
+                val dir = context.getExternalFilesDir(null)?.absolutePath!!.dropLast(6)
+                val fileName = "$dir/${link[position]}/${link[position]}.pdf"
+                val f = File(fileName)
+                //Log.d("cekfile", "nama file $fileName")
+                if (f.exists()) {
+                    //Log.d("cekfile", "file ada${link[position]}")
+                    image_info.visibility = View.VISIBLE
+                    Glide.with(context)
+                        .load(R.drawable.ic_checklist)
+                        .into(image_info)
+                } else {
+                    image_info.visibility = View.VISIBLE
+                    Glide.with(context)
+                        .load(R.drawable.ic_download)
+                        .into(image_info)
+                    //Log.d("cekfile", "file gak ada ${link[position]}")
+                }
+            }
+            else -> {
 
-                }
             }
         }
 
