@@ -41,7 +41,7 @@
                     android:text="Aplikasi"
                     android:textColor="@color/black"
                     android:fontFamily="@font/helvetica"
-                    android:textSize="30sp"
+                    android:textSize="28sp"
                     android:textAlignment="center"/>
 
             </LinearLayout>
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tentang_kami"
                 android:textColor="@color/black"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:textAlignment="center"/>
 
             <LinearLayout
@@ -64,40 +64,24 @@
                     android:layout_height="wrap_content"
                     android:text="Penanggung Jawab:"
                     android:textAlignment="center"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:fontFamily="@font/helvetica"
                     android:layout_marginTop="20dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Head of TnD"
+                    android:text="Rudy Yanto Sirait"
                     android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/helvetica"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rudy Sirait"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Manager TnD"
+                    android:text="Roby Syahputra"
                     android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/helvetica"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Roby Saputra"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -105,42 +89,26 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tim Penyusun Konten:"
+                    android:text="Tim Support:"
                     android:textAlignment="center"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:fontFamily="@font/helvetica"
                     android:layout_marginTop="20dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Koordinator Penyusun"
+                    android:text="Fizrul Indra Lubis"
                     android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/helvetica"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=". . . ."
-                    android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Penyusun Konten"
+                    android:text="Budi Umbara"
                     android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/helvetica"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=". . . ."
-                    android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -150,57 +118,87 @@
                     android:layout_height="wrap_content"
                     android:text="Tim Pengembang:"
                     android:textAlignment="center"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:fontFamily="@font/helvetica"
                     android:layout_marginTop="20dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lead Developer"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/helvetica"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:text="Pelangi Soko Aji"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:fontFamily="@font/helvetica"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Android Developer"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:fontFamily="@font/helvetica"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="A'an Syahputra"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Backend Developer"
+                    android:text="Andre Septio I. W."
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Andre Septio I. W."
+                    android:text="Sulkipli"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/helvetica"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pemyusun Materi:"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/helvetica"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dharsono"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/helvetica"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sudarjono"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/helvetica"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Muhammad Firdaus"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/helvetica"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Taripar"
+                    android:textAlignment="center"
+                    android:textSize="23sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
