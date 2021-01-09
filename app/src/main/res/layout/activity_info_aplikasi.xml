@@ -41,7 +41,7 @@
                     android:text="Aplikasi"
                     android:textColor="@color/black"
                     android:fontFamily="@font/helvetica"
-                    android:textSize="28sp"
+                    android:textSize="25sp"
                     android:textAlignment="center"/>
 
             </LinearLayout>
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:text="Rudy Yanto Sirait"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:text="Roby Syahputra"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:text="Fizrul Indra Lubis"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:text="Budi Umbara"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -126,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:text="Pelangi Soko Aji"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -135,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:text="A'an Syahputra"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:text="Andre Septio I. W."
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -153,7 +153,7 @@
                     android:layout_height="wrap_content"
                     android:text="Sulkipli"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -161,7 +161,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pemyusun Materi:"
+                    android:text="Penyusun Materi:"
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:fontFamily="@font/helvetica"
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:text="Dharsono"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:text="Sudarjono"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:text="Muhammad Firdaus"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
@@ -198,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:text="Taripar"
                     android:textAlignment="center"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:fontFamily="@font/helvetica"/>
