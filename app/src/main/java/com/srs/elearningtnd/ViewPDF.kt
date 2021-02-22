@@ -46,7 +46,7 @@ class ViewPDF : AppCompatActivity() {
             val namaFile = intent.getStringExtra("link")
             if (namaFile != null || !TextUtils.isEmpty(namaFile)) {
                 setContentPDF(
-                        "https://palmsentry.srs-ssms.com/modul/$namaFile",
+                            "https://e-learning.tnd-ssms.com/modul/$namaFile",
                         "Android/data/com.srs.elearningtnd/$namaFile"
                     )
             }

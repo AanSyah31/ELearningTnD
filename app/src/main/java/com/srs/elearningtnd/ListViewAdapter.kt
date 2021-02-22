@@ -46,7 +46,7 @@ class ListViewAdapter(
         //Glide.with(context).load("https://palmsentry.srs-ssms.com/thumbnail/${thumbnail[position]}.jpg").into(image)
 
         Glide.with(context)
-            .load("https://palmsentry.srs-ssms.com/thumbnail/${thumbnail[position]}.jpg")
+            .load("https://e-learning.tnd-ssms.com/thumbnail/${thumbnail[position]}.jpg")
             .placeholder(R.drawable.ic_baseline_image_24)
             .error(R.drawable.ic_baseline_broken_image_24)
             .diskCacheStrategy(DiskCacheStrategy.ALL)

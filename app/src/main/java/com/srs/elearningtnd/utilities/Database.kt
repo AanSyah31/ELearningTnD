@@ -5,7 +5,7 @@ package com.srs.elearningtnd.utilities
 @Suppress("unused")
 object Database {
     const val mp = "https://mobilepro.srs-ssms.com/"
-    const val server = "https://palmsentry.srs-ssms.com/"
+    const val server = "https://e-learning.tnd-ssms.com/"
     const val TAG_SUCCESS = "success"
     const val TAG_MESSAGE = "message"
 

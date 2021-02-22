@@ -41,7 +41,7 @@ class LoadingModul : AppCompatActivity() {
         @Suppress("UNUSED_ANONYMOUS_PARAMETER") val strReq: StringRequest =
             object : StringRequest(
                 Method.POST,
-                "https://palmsentry.srs-ssms.com/test_modul_md5.php",
+                "https://e-learning.tnd-ssms.com/test_modul_md5.php",
                 Response.Listener { response ->
                     try {
                         val jObj = JSONObject(response)
@@ -78,7 +78,7 @@ class LoadingModul : AppCompatActivity() {
                     AlertDialogUtility.withSingleAction(
                         this,
                         "Ulang",
-                        "Terjadi kesalahan koneksi",
+                        "Terjadi kesalahan koneksi (loading modul)",
                         "network_error.json"
                     ) {
                     val intent = Intent(this, ModulDigital::class.java)
@@ -116,7 +116,7 @@ class LoadingModul : AppCompatActivity() {
                 .setConnectTimeout(30000)
                 .build()
             PRDownloader.initialize(applicationContext, config)
-            val url = "https://palmsentry.srs-ssms.com/data_modul.json"
+            val url = "https://e-learning.tnd-ssms.com/data_modul.json"
             @Suppress("UNUSED_VARIABLE") val downloadId = PRDownloader.download(url, filePath, "data_modul.json")
                 .build()
                 .setOnStartOrResumeListener { }
