@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.srs.elearningtnd
+package com.tnd.elearningtnd
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,8 +10,8 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.srs.elearningtnd.utilities.AlertDialogUtility
-import com.srs.elearningtnd.utilities.FileMan
+import com.tnd.elearningtnd.utilities.AlertDialogUtility
+import com.tnd.elearningtnd.utilities.FileMan
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_listview.*
 import org.json.JSONArray

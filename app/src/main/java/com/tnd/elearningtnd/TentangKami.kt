@@ -1,4 +1,4 @@
-package com.srs.elearningtnd
+package com.tnd.elearningtnd
 
 import android.content.Intent
 import android.net.Uri

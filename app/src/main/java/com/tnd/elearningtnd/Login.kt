@@ -1,4 +1,4 @@
-package com.srs.elearningtnd
+package com.tnd.elearningtnd
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -23,9 +23,9 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.srs.elearningtnd.utilities.AlertDialogUtility
-import com.srs.elearningtnd.utilities.Database
-import com.srs.elearningtnd.utilities.PrefManager
+import com.tnd.elearningtnd.utilities.AlertDialogUtility
+import com.tnd.elearningtnd.utilities.Database
+import com.tnd.elearningtnd.utilities.PrefManager
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONException

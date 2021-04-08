@@ -1,4 +1,4 @@
-package com.srs.elearningtnd.utilities
+package com.tnd.elearningtnd.utilities
 
 import org.json.JSONObject
 import kotlin.Exception

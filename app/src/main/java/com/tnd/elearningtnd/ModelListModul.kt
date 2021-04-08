@@ -1,4 +1,4 @@
-package com.srs.elearningtnd
+package com.tnd.elearningtnd
 
 class ModelListModul
     (

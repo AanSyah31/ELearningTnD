@@ -1,22 +1,17 @@
-package com.srs.elearningtnd
+package com.tnd.elearningtnd
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
 import com.github.barteksc.pdfviewer.PDFView
-import com.github.barteksc.pdfviewer.PDFView.Configurator
-import com.github.barteksc.pdfviewer.listener.OnRenderListener
 import com.github.barteksc.pdfviewer.util.FitPolicy
-import com.github.chrisbanes.photoview.PhotoView
 import com.krishna.fileloader.FileLoader
 import com.krishna.fileloader.listener.FileRequestListener
 import com.krishna.fileloader.pojo.FileResponse
@@ -47,7 +42,7 @@ class ViewPDF : AppCompatActivity() {
             if (namaFile != null || !TextUtils.isEmpty(namaFile)) {
                 setContentPDF(
                             "https://e-learning.tnd-ssms.com/modul/$namaFile",
-                        "Android/data/com.srs.elearningtnd/$namaFile"
+                        "Android/data/com.tnd.elearningtnd/$namaFile"
                     )
             }
         }

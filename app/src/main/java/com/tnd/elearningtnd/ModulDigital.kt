@@ -1,4 +1,4 @@
-package com.srs.elearningtnd
+package com.tnd.elearningtnd
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -7,7 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AppCompatActivity
-import com.srs.elearningtnd.utilities.Loading
+import com.tnd.elearningtnd.utilities.Loading
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_modul_digital.*
 import kotlinx.android.synthetic.main.list_menu.view.*

@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.srs.elearningtnd.utilities
+package com.tnd.elearningtnd.utilities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -16,7 +16,9 @@ import com.bumptech.glide.Glide
 import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
-import com.srs.elearningtnd.*
+import com.tnd.elearningtnd.List
+import com.tnd.elearningtnd.MainMenu
+import com.tnd.elearningtnd.R
 import kotlinx.android.synthetic.main.activity_loading.*
 import kotlinx.android.synthetic.main.loader_layout.*
 import kotlinx.android.synthetic.main.loader_layout.view.*
@@ -27,39 +29,40 @@ import java.util.*
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "DEPRECATION")
-class LoadingModul : AppCompatActivity() {
+class Loading : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)
-        checkdata()
+        checkData()
     }
 
-    private fun checkdata(){
+    private fun checkData(){
         loading.tv_hint_loading.text = "Update data..." //setting text hint progressbar
         //method volley buat login (POST data to PHP)
         @Suppress("UNUSED_ANONYMOUS_PARAMETER") val strReq: StringRequest =
             object : StringRequest(
                 Method.POST,
-                "https://e-learning.tnd-ssms.com/test_modul_md5.php",
+                "https://e-learning.tnd-ssms.com/md5_elearning.php",
                 Response.Listener { response ->
                     try {
                         val jObj = JSONObject(response)
                         val hex = jObj.getString("hex")
                         val mainCheck = try {
                             UpdateMan().md5Checksum(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_modul.json")
-                        }catch (e:Exception){
+                        } catch (e: Exception) {
                             ""
                         }
                         // Check for error node in json
                         if (hex == mainCheck) {
-                            Log.d("yt","loading sama")
+                            Log.d("yt", "loading sama")
                             loadFile()
                         } else {
-                            Log.d("yt","loading beda")
-                            val fDelete = File(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_modul.json")
+                            Log.d("yt", "loading beda")
+                            val fDelete =
+                                File(this.getExternalFilesDir(null)?.absolutePath + "/MAIN/data_modul.json")
                             if (fDelete.exists()) {
-                                Log.d("yt","loading deleted")
+                                Log.d("yt", "loading deleted")
                                 fDelete.delete()
                             }
                             loadFile()
@@ -78,11 +81,10 @@ class LoadingModul : AppCompatActivity() {
                     AlertDialogUtility.withSingleAction(
                         this,
                         "Ulang",
-                        "Terjadi kesalahan koneksi (loading modul)",
+                        "Terjadi kesalahan koneksi (loading)",
                         "network_error.json"
                     ) {
-                    val intent = Intent(this, ModulDigital::class.java)
-                    startActivity(intent)
+                        loadFile()
                     }
                 }) {
                 override fun getParams(): Map<String, String> {
@@ -105,8 +107,6 @@ class LoadingModul : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     @Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     fun loadFile() {
-        val viewType = intent.getStringExtra("ViewType")
-        Log.d("yt","loading $viewType")
         val filePath = this.getExternalFilesDir(null)?.absolutePath + "/MAIN/"
         val f = File(filePath + "data_modul.json")
         if ((!f.exists())) {
@@ -134,12 +134,7 @@ class LoadingModul : AppCompatActivity() {
                 .start(object : OnDownloadListener {
                     @RequiresApi(Build.VERSION_CODES.O)
                     override fun onDownloadComplete() {
-                        Log.d("yt","loading dl komplit")
-                        val intent = Intent(this@LoadingModul, ListPdf::class.java)
-                        intent.putExtra("ViewType", viewType)
-                        intent.putExtra("network", "Online")
-                        startActivity(intent)
-                        overridePendingTransition(0, 0)
+                        loadingIntentMgr("Online")
                     }
                     override fun onError(error: com.downloader.Error?) {
                         Log.d("yt","loading dl error")
@@ -147,12 +142,7 @@ class LoadingModul : AppCompatActivity() {
                     }
                 })
         } else if (f.exists()) {
-            //Log.d("yt","loading ke list video")
-            val intent = Intent(this@LoadingModul, ListPdf::class.java)
-            intent.putExtra("ViewType", viewType)
-            intent.putExtra("network", "Online")
-            startActivity(intent)
-            overridePendingTransition(0, 0)
+            loadingIntentMgr("Online")
         }
     }
 
@@ -161,10 +151,21 @@ class LoadingModul : AppCompatActivity() {
     }
 
     fun offlineLoading() {
-        val intent = Intent(this@LoadingModul, ListPdf::class.java)
-        val viewType = intent.getStringExtra("ViewType")
-        intent.putExtra("ViewType", viewType)
-        intent.putExtra("network", "Offline")
+        loadingIntentMgr("Offline")
+    }
+
+    private fun loadingIntentMgr(network: String){
+        val media = intent.getStringExtra("media")
+        val kategori = intent.getStringExtra("kategori")
+        val search = intent.getStringExtra("search")
+        Log.d("testloading", "loading media intent: $media")
+        Log.d("testloading", "loading kat intent: $kategori")
+        Log.d("network","Intent test $network")
+        intent = Intent(this, List::class.java)
+        intent.putExtra("kategori", kategori)
+        intent.putExtra("network", network)
+        intent.putExtra("search", search)
+        intent.putExtra("media", media)
         startActivity(intent)
         overridePendingTransition(0, 0)
     }

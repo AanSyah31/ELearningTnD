@@ -1,4 +1,4 @@
-package com.srs.elearningtnd.utilities
+package com.tnd.elearningtnd.utilities
 
 import android.content.Context
 import android.content.SharedPreferences

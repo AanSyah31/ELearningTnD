@@ -1,4 +1,4 @@
-package com.srs.elearningtnd
+package com.tnd.elearningtnd
 
 import android.Manifest
 import android.content.Intent
@@ -9,7 +9,7 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.BaseMultiplePermissionsListener
-import com.srs.elearningtnd.utilities.AlertDialogUtility
+import com.tnd.elearningtnd.utilities.AlertDialogUtility
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.collections.List
 

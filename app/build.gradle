@@ -7,11 +7,11 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.srs.elearningtnd"
+        applicationId 'com.tnd.elearningtnd'
         minSdkVersion 26
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.2.1"
+        versionCode 10202
+        versionName "1.2.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

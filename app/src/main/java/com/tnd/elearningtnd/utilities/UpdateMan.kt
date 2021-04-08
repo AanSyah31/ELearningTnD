@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.srs.elearningtnd.utilities
+package com.tnd.elearningtnd.utilities
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -19,7 +19,7 @@ import com.downloader.OnDownloadListener
 import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
 import com.google.android.material.button.MaterialButton
-import com.srs.elearningtnd.R
+import com.tnd.elearningtnd.R
 import kotlinx.android.synthetic.main.dialog_layout_success.view.*
 import org.apache.commons.codec.binary.Hex
 import org.apache.commons.codec.digest.DigestUtils

@@ -1,13 +1,13 @@
 @file:Suppress("DEPRECATION")
 
-package com.srs.elearningtnd.utilities
+package com.tnd.elearningtnd.utilities
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import com.srs.elearningtnd.R
+import com.tnd.elearningtnd.R
 import kotlinx.android.synthetic.main.dialog_layout_success.view.*
 
 class AlertDialogUtility {
